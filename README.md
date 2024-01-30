@@ -2,6 +2,10 @@
 
 ## Description
 
+## Project Board
+
+[Trello](https://trello.com/b/b9vfrWpD/group-assignment-cinema-project-20)
+
 ## Best Practices
 
 ## Meeting notes
