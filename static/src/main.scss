@@ -1,0 +1,76 @@
+// Color variables
+$darkgrey: #222222;
+$darkblue: #26344a;
+$greygreen: #6c797e;
+$lightgreen: #b1bdb2;
+$lightgrey: #f4f3ee;
+$white: #ffffff;
+$black: #000000;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+main {
+  position: relative;
+  top: 250px;
+  text-align: center;
+  min-height: 45%; // This is a temporary fix for height and footer issues!
+}
+
+* {
+  margin: 0;
+  font-size: 10px;
+  list-style-type: none;
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif;
+
+  h1 {
+    font-size: 3.2rem;
+    color: $lightgreen;
+    margin: 10px;
+    text-shadow: 0px 0px 7px rgba(0, 0, 0, 0.7);
+  }
+
+  h2 {
+    font-size: 2.2rem;
+    color: $lightgreen;
+    margin: 5px;
+    text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.8);
+  }
+  p {
+    font-size: 1.4rem;
+    color: $lightgrey;
+    text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.7);
+  }
+}
+
+body {
+  background: linear-gradient(
+    0deg,
+    rgba(34, 34, 34, 1) 10%,
+    rgba(38, 52, 74, 1) 60%,
+    rgba(108, 121, 126, 1) 100%
+  );
+  background-repeat: no-repeat;
+  height: 100vh;
+
+  .background__raining {
+    position: fixed;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+@import 'sections/footer';
+@import 'sections/header';
+@import 'sections/start-page';
+@import 'sections/herobanner';
+@import 'sections/movies';
+@import 'sections/about-us';
+@import 'sections/tickets';

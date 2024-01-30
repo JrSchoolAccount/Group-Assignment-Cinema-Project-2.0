@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Folkets Bio i Grådask - Officiell webbplats för biograferna. Vi visar prisbelönt kvalitetsfilm från hela världen. Läs vårt program och boka era platser här."
+    />
+    <meta name="author" content="Folket Bio i Grådask" />
+    <!-- Open Graph / Facebook -->
+    <meta property="og:title" content="About us - Biograf Regna" />
+    <meta
+      name="og:description"
+      content="Folkets Bio i Grådask - Officiell webbplats för biograferna. Vi visar prisbelönt kvalitetsfilm från hela världen. Läs vårt program och boka era platser här."
+    />
+    <meta
+      property="og:image"
+      content="https://jrschoolaccount.github.io/Group-Assignment2-Cinema-Project/assets/logga.png"
+    />
+    <meta
+      property="og:url"
+      content="https://jrschoolaccount.github.io/Group-Assignment2-Cinema-Project/"
+    />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@kinogrådask" />
+    <meta name="twitter:title" content="About us - Biograf Regna" />
+    <meta
+      name="twitter:description"
+      content="Folkets Bio i Grådask - Officiell webbplats för biograferna. Vi visar prisbelönt kvalitetsfilm från hela världen. Läs vårt program och boka era platser här."
+    />
+    <meta
+      name="twitter:image"
+      content="https://jrschoolaccount.github.io/Group-Assignment2-Cinema-Project/assets/logga.png"
+    />
+    <title>Om oss</title>
+    <link rel="stylesheet" type="text/css" href="./static/assets/main.css" />
+    <link rel="icon" type="image/png" href="./static/assets/logga.png" />
+    <script type="module" src="./static/main.js" defer></script>
+  </head>
+
+  <body class="about-us-body">
+    <%- include('../views/partials/header.ejs') %>
+    <img
+      class="background__raining"
+      src="./static/assets/raining-background.jpg"
+      alt="raining in the background"
+    />
+    <main class="about-us-main">
+      <h1>Om oss</h1>
+      <h2>Bio Grådask - "Det är vi som sätter Regn i Regna"</h2>
+      <p>
+        Vi startade den här biografen för att erbjuda invånare i Regna en
+        sysselsättning under de dagar, veckor och månader med ihållande regn som
+        ofta iaktas här. För att inte förstöra Regnas image som en deprimerande
+        by gör vi i vårt filmutbud ett särskilt urval av gamla klassiker och nya
+        releaser, samtliga med ett deprimerande tema! Vi gör inget anspråk på
+        att förändra Regnas status quo, utan förser allmänheten med ett
+        alternativt sätt att uppnå förödande depression. Kom till Bio Grådask
+        och sörj livets slit och slask med oss!
+      </p>
+      <h2>Hitta hit</h2>
+      <div style="width: 100%">
+        <iframe
+          width="400"
+          height="400"
+          frameborder="0"
+          src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=Regnag%C3%A5rden%2047,%20640%2010%20H%C3%B6gsj%C3%B6+(Bio%20Gr%C3%A5dask)&amp;t=&amp;z=15&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+          ><a href="https://www.maps.ie/population/"
+            >Population calculator map</a
+          ></iframe
+        >
+      </div>
+
+      <h2>Öppettider</h2>
+      <p>
+        Vi har öppet enbart ifall av regn (eller vice versa?), vilket är för det
+        mesta här i Regna. Med regn avses här en nederbörd på minst 0.2 mm/h,
+        snö ej inkluderat.
+      </p>
+
+      <h2>Kontakta oss</h2>
+      <p>
+        Vi tar emot fax på 35992-494Ar5. Nisse på kontoret håller på att
+        installera datormaskin och vi hoppas inom kort kunna ta emot även
+        internetpost, så kallat E-mejl. Håll koll på hemsidan för senaste infon
+        om hur det går! I övrigt rekommenderas att dyka upp vid receptionen,
+        Birgitta brukar vara där ibland och kan även teckenspråk! Oftast är dock
+        biografen obemannad, då våra anställda alltjämt sjukskriver sig för
+        nedstämdhet. Känn er fria att bara kliva in i biosalongen under
+        öppettider och prata med någon i publiken därinne, ingen bryr sig ändå
+        egentligen om filmen som pågår.
+      </p>
+    </main>
+
+    <%- include('../views/partials/footer.ejs') %>
+  </body>
+</html>

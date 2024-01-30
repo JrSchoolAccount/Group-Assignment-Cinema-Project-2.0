@@ -1,0 +1,51 @@
+$darkgrey: #222222;
+$darkblue: #26344a;
+$greygreen: #6c797e;
+$lightgreen: #b1bdb2;
+$lightgrey: #f4f3ee;
+$white: #ffffff;
+$black: #222222;
+
+#header {
+  background: linear-gradient(
+    0deg,
+    rgba(38, 52, 74, 0.1) 50%,
+    rgba(34, 34, 34, 0.1) 100%
+  );
+  background-repeat: no-repeat;
+  height: 0px;
+  background-color: black;
+
+  div {
+    align-items: center;
+    width: 100%;
+    padding: 2em;
+    display: flex;
+
+    nav {
+      background-color: rgba(170, 37, 99, 0);
+      padding: 4em;
+      width: 80%;
+
+      ul {
+        display: flex;
+        justify-content: space-between;
+        font-size: 2.4em;
+
+        a {
+          font-size: 2.4em;
+          font-weight: 700;
+          color: white;
+        }
+
+        li {
+          :hover {
+            color: $greygreen;
+            transition: color 0.3s ease;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}
