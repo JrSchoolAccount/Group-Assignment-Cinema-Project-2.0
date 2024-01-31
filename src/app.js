@@ -44,6 +44,26 @@ app.get('/filmer/:movieId', async (req, res) => {
   }
 });
 
+app.get('api/screenings', async (req, res) => {
+  // Placeholder, delete me...
+});
+
+app.get('api/movies/:movieID/screenings', async (req, res) => {
+  // Placeholder, delete me...
+});
+
+app.get('api/movies/:movieID/rating', async (req, res) => {
+  // Placeholder, delete me...
+});
+
+app.get('api/movies/:movieId/reviews', async (req, res) => {
+  // Placeholder, delete me...
+});
+
+app.post('api/movies/:movieID/reviews', async (req, res) => {
+  // Placeholder, delete me...
+});
+
 app.get('*', (req, res) => {
   res.status(404).render('404.ejs');
 });
