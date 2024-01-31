@@ -3,6 +3,7 @@ import fs from 'fs/promises';
 import ejs from 'ejs';
 import { loadMovie, loadMovies } from './movies.js';
 import { renderMarkdown } from './markdown.js';
+import { loadMovieReviews } from './movieReviews.js';
 
 const app = express();
 app.set('view engine', 'ejs');
@@ -56,8 +57,17 @@ app.get('api/movies/:movieID/rating', async (req, res) => {
   // Placeholder, delete me...
 });
 
-app.get('api/movies/:movieId/reviews', async (req, res) => {
-  // Placeholder, delete me...
+app.get('/api/movies/:movieId/reviews', async (req, res) => {
+  const movieId = req.params.movieId;
+  const page = req.query.page || 1;
+
+  try {
+    const reviews = await loadMovieReviews(movieId, page);
+    res.json({ reviews });
+  } catch (error) {
+    console.error('Error loading reviews:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
 });
 
 app.post('api/movies/:movieID/reviews', async (req, res) => {
