@@ -1,75 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Folkets Bio i Grådask - Officiell webbplats för biograferna. Vi visar prisbelönt kvalitetsfilm från hela världen. Läs vårt program och boka era platser här."
-    />
-    <meta name="author" content="Folket Bio i Grådask" />
-    <!-- Open Graph / Facebook -->
-    <meta property="og:title" content="Aktuella filmer - Biograf Regna" />
-    <meta
-      name="og:description"
-      content="Folkets Bio i Grådask - Officiell webbplats för biograferna. Vi visar prisbelönt kvalitetsfilm från hela världen. Läs vårt program och boka era platser här."
-    />
-    <meta
-      property="og:image"
-      content="https://jrschoolaccount.github.io/Group-Assignment2-Cinema-Project/assets/logga.png"
-    />
-    <meta
-      property="og:url"
-      content="https://jrschoolaccount.github.io/Group-Assignment2-Cinema-Project/"
-    />
-    <meta property="og:type" content="website" />
 
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@kinogrådask" />
-    <meta name="twitter:title" content="Aktuella filmer - Biograf Regna" />
-    <meta
-      name="twitter:description"
-      content="Folkets Bio i Grådask - Officiell webbplats för biograferna. Vi visar prisbelönt kvalitetsfilm från hela världen. Läs vårt program och boka era platser här."
-    />
-    <meta
-      name="twitter:image"
-      content="https://jrschoolaccount.github.io/Group-Assignment2-Cinema-Project/assets/logga.png"
-    />
-    <title>Film</title>
-    <link rel="stylesheet" type="text/css" href="../static/assets/main.css" />
-    <link rel="icon" type="image/png" href="../static/assets/logga.png" />
-    <script type="module" src="../static/main.js" defer></script>
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Folkets Bio i Grådask - Officiell webbplats för biograferna. Vi visar prisbelönt kvalitetsfilm från hela världen. Läs vårt program och boka era platser här." />
+  <meta name="author" content="Folket Bio i Grådask" />
+  <!-- Open Graph / Facebook -->
+  <meta property="og:title" content="Aktuella filmer - Biograf Regna" />
+  <meta name="og:description"
+    content="Folkets Bio i Grådask - Officiell webbplats för biograferna. Vi visar prisbelönt kvalitetsfilm från hela världen. Läs vårt program och boka era platser här." />
+  <meta property="og:image"
+    content="https://jrschoolaccount.github.io/Group-Assignment2-Cinema-Project/assets/logga.png" />
+  <meta property="og:url" content="https://jrschoolaccount.github.io/Group-Assignment2-Cinema-Project/" />
+  <meta property="og:type" content="website" />
 
-  <body>
-    <%- include('../views/partials/headerFilm.ejs') %>
-    <img
-      class="background__raining"
-      src="../static/assets/raining-background.jpg"
-      alt="raining in the background"
-    />
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@kinogrådask" />
+  <meta name="twitter:title" content="Aktuella filmer - Biograf Regna" />
+  <meta name="twitter:description"
+    content="Folkets Bio i Grådask - Officiell webbplats för biograferna. Vi visar prisbelönt kvalitetsfilm från hela världen. Läs vårt program och boka era platser här." />
+  <meta name="twitter:image"
+    content="https://jrschoolaccount.github.io/Group-Assignment2-Cinema-Project/assets/logga.png" />
+  <title>Film</title>
+  <link rel="stylesheet" type="text/css" href="../static/assets/main.css" />
+  <link rel="icon" type="image/png" href="../static/assets/logga.png" />
+  <script type="module" src="../static/main.js" defer></script>
+</head>
+
+<body>
+  <%- include('../views/partials/headerFilm.ejs') %>
+    <img class="background__raining" src="../static/assets/raining-background.jpg" alt="raining in the background" />
     <main>
       <a href="/filmer">Tillbaka till Filmer</a>
       <article class="movie">
-        <h1><%= movie.title %></h1>
+        <h1>
+          <%= movie.title %>
+        </h1>
         <div class="intro"><%- renderMarkdown(movie.intro) %></div>
         <% if (movie.image) { %>
-        <img src="<%= movie.image.url %>" />
-        <% } %>
+          <img src="<%= movie.image.url %>" />
+          <% } %>
       </article>
 
-      <div><h2>Lägg till filmens betyg. fetch() frontend</h2></div>
+      <div>
+        <h2>Lägg till filmens betyg. fetch() frontend</h2>
+      </div>
 
       <div>
         <h2>Lägg till lista med alla kommande visningar. fetch() frontend</h2>
       </div>
 
-      <div><h2>Lägg till lista med recensioner. fetch() frontend</h2></div>
+      <div>
+        <h2>Lägg till lista med recensioner. fetch() frontend</h2>
+      </div>
 
       <h2>Lägg till skicka in recension. Skicka med fetch() frontend</h2>
+      <a href="/review/<%= movie.id %>">
+        <button class="button__review">Make a review</button>
+      </a>
     </main>
 
     <%- include('../views/partials/footerFilm.ejs') %>
-  </body>
+</body>
+
 </html>

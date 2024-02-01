@@ -7,11 +7,14 @@
   "scripts": {
     "dev": "nodemon .",
     "start": "node .",
-    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest"
+    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest",
+    "sass-dev": "sass --watch --update --style=expanded static/src/main.scss:static/assets/main.css",
+    "sass-prod": "sass --no-source-map --style=compressed static/src/main.scss:static/assets/main.css"
   },
   "author": "JR",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.20.2",
     "ejs": "^3.1.9",
     "express": "^4.18.2",
     "marked": "^11.2.0",
@@ -21,6 +24,7 @@
     "cross-env": "^7.0.3",
     "jest": "^29.7.0",
     "nodemon": "^3.0.2",
+    "sass": "^1.70.0",
     "supertest": "^6.3.4"
   }
 }

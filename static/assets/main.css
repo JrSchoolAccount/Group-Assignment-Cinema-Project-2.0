@@ -16,7 +16,7 @@ main {
   font-size: 10px;
   list-style-type: none;
   text-decoration: none;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 * h1 {
   font-size: 3.2rem;
@@ -37,12 +37,7 @@ main {
 }
 
 body {
-  background: linear-gradient(
-    0deg,
-    rgb(34, 34, 34) 10%,
-    rgb(38, 52, 74) 60%,
-    rgb(108, 121, 126) 100%
-  );
+  background: linear-gradient(0deg, rgb(34, 34, 34) 10%, rgb(38, 52, 74) 60%, rgb(108, 121, 126) 100%);
   background-repeat: no-repeat;
   height: 100vh;
 }
@@ -108,11 +103,7 @@ body .background__raining {
 }
 
 #header {
-  background: linear-gradient(
-    0deg,
-    rgba(38, 52, 74, 0.1) 50%,
-    rgba(34, 34, 34, 0.1) 100%
-  );
+  background: linear-gradient(0deg, rgba(38, 52, 74, 0.1) 50%, rgba(34, 34, 34, 0.1) 100%);
   background-repeat: no-repeat;
   height: 0px;
   background-color: black;
@@ -228,31 +219,100 @@ body .background__raining {
   margin-top: 1em;
 }
 
-main li a {
-  font-size: 2em;
-  color: rgba(255, 255, 255, 0.781);
+.div__form {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.6901960784);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  margin-top: 50px;
+  border-radius: 8px;
 }
-
-main li :hover {
-  font-size: 2.1em;
+.div__form h2 {
+  margin-bottom: 4rem;
   color: white;
+  font-size: 3.4rem;
 }
-
-main a {
-  font-size: 2em;
-  color: white;
-}
-
-article {
+.div__form form {
   display: flex;
   flex-direction: column;
-  align-items: center;
+}
+.div__form form div {
+  position: relative;
+}
+.div__form form #reviewer__name {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  background: transparent;
+}
+.div__form form #reviewer__name::placeholder {
+  color: #888;
+}
+.div__form form #rating {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  background: transparent;
+}
+.div__form form #rating::placeholder {
+  color: #888;
+}
+.div__form form input:focus ~ label,
+.div__form form input:valid ~ label {
+  top: -20px;
+  left: 0;
+  color: #03e9f4;
+  font-size: 12px;
+}
+.div__form form label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  pointer-events: none;
+  transition: 0.5s;
+}
+.div__form form textarea {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #888;
+  border-radius: 4px;
+  background-color: #444;
+  color: white;
+  min-height: 15rem;
+  font-size: 1.5rem;
+}
+.div__form form textarea::placeholder {
+  color: #888;
+}
+.div__form form button {
+  position: relative;
+  display: inline-block;
+  padding: 10px 20px;
+  color: #ffffff;
+  font-size: 2.4rem;
+  text-decoration: none;
+  border: none;
+  border-radius: 1rem;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.6156862745);
+  width: fit-content;
+}
+.div__form form button:hover {
+  background-color: black;
 }
 
-.intro {
-  margin-bottom: 1em;
-}
-
-.movie img {
-  max-width: 60em;
-}
+/*# sourceMappingURL=main.css.map */
