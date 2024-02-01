@@ -1,7 +1,7 @@
 import express from 'express';
 import fs from 'fs/promises';
 import ejs from 'ejs';
-import { loadMovie, loadMovies } from './movies.js';
+import { loadMovie, loadMovies, loadScreenings } from './movies.js';
 import { renderMarkdown } from './markdown.js';
 
 const app = express();
@@ -34,6 +34,9 @@ app.get('/filmer', async (req, res) => {
 app.get('/filmer/:movieId', async (req, res) => {
   try {
     const movie = await loadMovie(req.params.movieId);
+
+    const screenings = await loadScreenings(req.params.movieId);
+    /*  console.log(screenings); */
     res.render('film', { movie, renderMarkdown });
   } catch (error) {
     if (error.message === 'Movie not found') {
