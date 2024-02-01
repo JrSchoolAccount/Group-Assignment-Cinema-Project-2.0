@@ -23,9 +23,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     screeningsData.data.forEach((screening) => {
       const listItem = document.createElement('li');
-      const startTime = new Date(
-        screening.attributes.start_time
-      ).toLocaleString();
+      const startTime =
+        new Date(screening.attributes.start_time).toLocaleDateString('sv-SE') +
+        ', ' +
+        new Date(screening.attributes.start_time).toLocaleTimeString('sv-SE');
       listItem.textContent = `Datum: ${startTime}, Plats: ${screening.attributes.room}`;
       screeningsList.appendChild(listItem);
     });
