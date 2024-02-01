@@ -33,11 +33,14 @@ app.get('/filmer', async (req, res) => {
 
 app.get('/filmer/:movieId', async (req, res) => {
   try {
-    const movie = await loadMovie(req.params.movieId);
+    const movieId = req.params.movieId;
+    console.log('Movie ID:', movieId);
+    const movie = await loadMovie(movieId);
+    console.log('Movie:', movie);
 
-    const screenings = await loadScreenings(req.params.movieId);
-    /*  console.log(screenings); */
-    res.render('film', { movie, renderMarkdown });
+    const screenings = await loadScreenings(movieId);
+    console.log('Screenings:', screenings);
+    res.render('film', { movie, renderMarkdown, screenings });
   } catch (error) {
     if (error.message === 'Movie not found') {
       res.status(404).render('filmer404');
