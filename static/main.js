@@ -26,4 +26,19 @@ if (heroContainer) {
 
 // console.log(fetchScreenings());
 
-fetch('http://localhost:5080/api/screenings');
+async function renderScreenings() {
+  const res = await fetch('http://localhost:5080/api/screenings');
+  console.log(res);
+  const payload = await res.json();
+  console.log(payload[0].attributes.movie.data.attributes.title);
+
+  const upcomingMovieTitles = [];
+  payload.forEach((screening) => {
+    upcomingMovieTitles.push(screening.attributes.movie.data.attributes.title);
+  });
+
+  const upcomingMovies = document.querySelector('.upcomingMovies');
+  upcomingMovies.innerHTML = upcomingMovieTitles;
+}
+
+renderScreenings();

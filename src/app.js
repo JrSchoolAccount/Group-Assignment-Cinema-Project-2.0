@@ -47,12 +47,8 @@ app.get('/filmer/:movieId', async (req, res) => {
 });
 
 app.get('/api/screenings', async (req, res) => {
-  const screenings = await getUpcomingScreenings(cmsAdapter);
-  // console.log(screenings.data);
-  const screeningStarttime = screenings.map(
-    (screening) => screening.attributes.start_time
-  );
-  res.render('index', { screeningStarttime });
+  const upcomingScreenings = await getUpcomingScreenings(cmsAdapter);
+  res.send(upcomingScreenings);
 });
 
 app.get('api/movies/:movieID/screenings', async (req, res) => {
