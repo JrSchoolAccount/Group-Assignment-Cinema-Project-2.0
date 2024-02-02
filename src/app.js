@@ -34,13 +34,9 @@ app.get('/filmer', async (req, res) => {
 app.get('/filmer/:movieId', async (req, res) => {
   try {
     const movieId = req.params.movieId;
-    console.log('Movie ID:', movieId);
     const movie = await loadMovie(movieId);
-    console.log('Movie:', movie);
 
-    const screenings = await loadScreenings(movieId);
-    console.log('Screenings:', screenings);
-    res.render('film', { movie, renderMarkdown, screenings });
+    res.render('film', { movie, renderMarkdown });
   } catch (error) {
     if (error.message === 'Movie not found') {
       res.status(404).render('filmer404');
@@ -50,24 +46,21 @@ app.get('/filmer/:movieId', async (req, res) => {
   }
 });
 
-app.get('api/screenings', async (req, res) => {
-  // Placeholder, delete me...
-});
+app.get('/api/movies/:movieID/screenings', async (req, res) => {
+  try {
+    const movieId = req.params.movieID;
+    const screenings = await loadScreenings(movieId);
+    console.log('loadscreenings:', loadScreenings);
+    console.log('screenings:', screenings);
 
-app.get('api/movies/:movieID/screenings', async (req, res) => {
-  // Placeholder, delete me...
-});
-
-app.get('api/movies/:movieID/rating', async (req, res) => {
-  // Placeholder, delete me...
-});
-
-app.get('api/movies/:movieId/reviews', async (req, res) => {
-  // Placeholder, delete me...
-});
-
-app.post('api/movies/:movieID/reviews', async (req, res) => {
-  // Placeholder, delete me...
+    res.json(screenings);
+  } catch (error) {
+    if (error.message === 'Screening not found') {
+      res.status(404).render('screening404');
+    } else {
+      res.status(500).send('Internal Server Error');
+    }
+  }
 });
 
 app.get('*', (req, res) => {

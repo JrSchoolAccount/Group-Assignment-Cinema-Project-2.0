@@ -7,6 +7,7 @@ export async function loadScreenings(id) {
     API_BASE + '/screenings?populate=movie&filters[movie]=' + id
   );
   const payload = await res.json();
+  console.log('heres the payload', payload);
   return payload;
 }
 
