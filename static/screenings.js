@@ -4,11 +4,15 @@ document.addEventListener('DOMContentLoaded', async () => {
     const movieId = `/api/movies/${id}/screenings`;
     const screeningsResponse = await fetch(movieId);
     const screeningsData = await screeningsResponse.json();
-    console.log('här kommer screeningdata:', screeningsData);
 
     const screeningsList = document.getElementById('screening-list');
     screeningsList.innerHTML = '';
 
+    screeningsData.data.sort((a, b) => {
+      const startTimeA = new Date(a.attributes.start_time).getTime();
+      const StartTimeB = new Date(b.attributes.start_time).getTime();
+      return startTimeA - StartTimeB;
+    });
     screeningsData.data.forEach((screening) => {
       const listItem = document.createElement('li');
       const startTime = new Date(screening.attributes.start_time);

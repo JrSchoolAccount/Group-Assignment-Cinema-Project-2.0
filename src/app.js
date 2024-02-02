@@ -50,10 +50,13 @@ app.get('/api/movies/:movieID/screenings', async (req, res) => {
   try {
     const movieId = req.params.movieID;
     const screenings = await loadScreenings(movieId);
-    console.log('loadscreenings:', loadScreenings);
-    console.log('screenings:', screenings);
 
-    res.json(screenings);
+    const currentTime = new Date().getTime();
+    const upcomingScreenings = screenings.data.filter((screening) => {
+      return new Date(screening.attributes.start_time).getTime() >= currentTime;
+    });
+
+    res.json({ data: upcomingScreenings });
   } catch (error) {
     if (error.message === 'Screening not found') {
       res.status(404).render('screening404');
