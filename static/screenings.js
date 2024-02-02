@@ -11,11 +11,11 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     screeningsData.data.forEach((screening) => {
       const listItem = document.createElement('li');
-      const startTime =
-        new Date(screening.attributes.start_time).toLocaleDateString('sv-SE') +
-        ', ' +
-        new Date(screening.attributes.start_time).toLocaleTimeString('sv-SE');
-      listItem.textContent = `Datum: ${screening.attributes.start_time}, Plats: ${screening.attributes.room}`;
+      const startTime = new Date(screening.attributes.start_time);
+      const formatDate = startTime.toLocaleDateString('sv-Se');
+      const formatTime = startTime.toLocaleTimeString('sv-SE');
+      const formattedDateTime = `${formatDate}, ${formatTime}`;
+      listItem.textContent = `Datum: ${formattedDateTime}, Plats: ${screening.attributes.room}`;
       screeningsList.appendChild(listItem);
     });
   } catch (error) {
