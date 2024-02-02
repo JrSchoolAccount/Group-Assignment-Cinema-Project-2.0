@@ -28,17 +28,26 @@ if (heroContainer) {
 
 async function renderScreenings() {
   const res = await fetch('http://localhost:5080/api/screenings');
-  console.log(res);
   const payload = await res.json();
-  console.log(payload[0].attributes.movie.data.attributes.title);
-
-  const upcomingMovieTitles = [];
-  payload.forEach((screening) => {
-    upcomingMovieTitles.push(screening.attributes.movie.data.attributes.title);
-  });
-
+  // const upcomingMovieTitles = [];
   const upcomingMovies = document.querySelector('.upcomingMovies');
-  upcomingMovies.innerHTML = upcomingMovieTitles;
+  // upcomingMovies.innerHTML = upcomingMovieTitles;
+  const screeningsDOMHeadline = document.createElement('h2');
+  screeningsDOMHeadline.innerText = 'Nästkommande visningar på Bio Regna';
+  upcomingMovies.append(screeningsDOMHeadline);
+  payload.forEach((screening) => {
+    const screeningDOMListItem = document.createElement('li');
+    const screeningDOMLink = document.createElement('a');
+    screeningDOMLink.innerText = `${screening.attributes.movie.data.attributes.title} visas den ${screening.attributes.start_time} i ${screening.attributes.room}`;
+    screeningDOMLink.setAttribute(
+      'href',
+      'http://localhost:5080/filmer/' + screening.attributes.movie.data.id
+    );
+
+    // upcomingMovieTitles.push(screening.attributes.movie.data.attributes.title);
+    screeningDOMListItem.append(screeningDOMLink);
+    upcomingMovies.append(screeningDOMListItem);
+  });
 }
 
 renderScreenings();
