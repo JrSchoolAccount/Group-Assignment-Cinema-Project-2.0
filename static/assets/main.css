@@ -1,3 +1,4 @@
+@charset "UTF-8";
 *,
 *::before,
 *::after {
@@ -16,7 +17,7 @@ main {
   font-size: 10px;
   list-style-type: none;
   text-decoration: none;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 * h1 {
   font-size: 3.2rem;
@@ -37,12 +38,7 @@ main {
 }
 
 body {
-  background: linear-gradient(
-    0deg,
-    rgb(34, 34, 34) 10%,
-    rgb(38, 52, 74) 60%,
-    rgb(108, 121, 126) 100%
-  );
+  background: linear-gradient(0deg, rgb(34, 34, 34) 10%, rgb(38, 52, 74) 60%, rgb(108, 121, 126) 100%);
   background-repeat: no-repeat;
   height: 100vh;
 }
@@ -108,11 +104,7 @@ body .background__raining {
 }
 
 #header {
-  background: linear-gradient(
-    0deg,
-    rgba(38, 52, 74, 0.1) 50%,
-    rgba(34, 34, 34, 0.1) 100%
-  );
+  background: linear-gradient(0deg, rgba(38, 52, 74, 0.1) 50%, rgba(34, 34, 34, 0.1) 100%);
   background-repeat: no-repeat;
   height: 0px;
   background-color: black;
@@ -227,24 +219,6 @@ body .background__raining {
 .about-us-body h2 {
   margin-top: 1em;
 }
-/*detta försvann men jag la till det igen*/
-main li a {
-  font-size: 2em;
-  color: rgba(255, 255, 255, 0.781);
-}
-
-main li :hover {
-  font-size: 2.1em;
-  color: white;
-}
-
-main a {
-  font-size: 2em;
-}
-
-.movie img {
-  max-width: 60em;
-}
 
 .div__form {
   max-width: 40rem;
@@ -317,7 +291,7 @@ main a {
   margin-bottom: 15px;
   border: 1px solid #888;
   border-radius: 4px;
-  background-color: #444;
+  background-color: rgba(0, 0, 0, 0.631372549);
   color: white;
   min-height: 15rem;
   font-size: 1.5rem;
@@ -326,20 +300,84 @@ main a {
   color: #888;
 }
 .div__form form button {
-  position: relative;
-  display: inline-block;
-  padding: 10px 20px;
-  color: #ffffff;
-  font-size: 2.4rem;
-  text-decoration: none;
+  width: 220px;
+  height: 50px;
   border: none;
-  border-radius: 1rem;
-  overflow: hidden;
-  background-color: rgba(0, 0, 0, 0.6156862745);
-  width: fit-content;
+  outline: none;
+  color: #fff;
+  background: #111;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 10px;
+  font-size: 2em;
+  align-self: center;
 }
-.div__form form button:hover {
-  background-color: black;
+.div__form form button:before {
+  content: "";
+  background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing 20s linear infinite;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 10px;
+}
+.div__form form button:active {
+  color: #000;
+}
+.div__form form button:active:after {
+  background: transparent;
+}
+.div__form form button:hover:before {
+  opacity: 1;
+}
+.div__form form button:after {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #111;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+}
+@keyframes glowing {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+/*detta försvann men jag la till det igen*/
+main li a {
+  font-size: 2em;
+  color: rgba(255, 255, 255, 0.781);
+}
+
+main li :hover {
+  font-size: 2.1em;
+  color: white;
+}
+
+main a {
+  font-size: 2em;
+}
+
+.movie img {
+  max-width: 60em;
 }
 
 /*# sourceMappingURL=main.css.map */

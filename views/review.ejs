@@ -28,6 +28,7 @@
     <link rel="stylesheet" type="text/css" href="../static/assets/main.css" />
     <link rel="icon" type="image/png" href="../static/assets/logga.png" />
     <script type="module" src="../static/main.js" defer></script>
+    <script src="path/to/review.js"></script>
 </head>
 
 <body>
@@ -49,13 +50,14 @@
                         <label>Rating</label>
                     </div>
 
-                    <textarea placeholder="Comment" name="review_text" id="review__text" required></textarea>
+                    <textarea placeholder="Comment" name="review_text" id="review__text"></textarea>
 
-                    <button type="submit" onclick="submitReview()" class="button__submit__review">Submit</button>
+                    <button type="submit" onclick="submitReview(event)" class="a a__submit">Submit</button>
                 </form>
             </div>
         </main>
         <%- include('../views/partials/footer.ejs') %>
+
 </body>
 
 </html>

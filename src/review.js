@@ -16,3 +16,13 @@ export async function submitReview() {
       console.error('Error', error.message);
     });
 }
+
+/*const nameInput = document.getElementById('reviewer__name');
+nameInput.addEventListener('input', function () {
+  const currentValue = this.value;
+  if (currentValue.length > 0) {
+    const upperCase =
+      currentValue.charAt(0).toUpperCase() + currentValue.slice(1);
+    this.value = upperCase;
+  }
+});*/

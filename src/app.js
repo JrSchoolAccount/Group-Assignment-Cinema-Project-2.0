@@ -66,9 +66,7 @@ app.get('api/movies/:movieID/rating', async (req, res) => {
   // Placeholder, delete me...
 });
 
-app.get('api/movies/:movieID/reviews', async (req, res) => {
-  const movieID = req.params.movieID;
-});
+app.get('api/movies/:movieID/reviews', async (req, res) => {});
 
 //Simons post request
 app.post('/api/movies/:movieID/reviews', async (req, res) => {
