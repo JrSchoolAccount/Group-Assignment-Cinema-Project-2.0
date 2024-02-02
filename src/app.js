@@ -3,6 +3,8 @@ import fs from 'fs/promises';
 import ejs from 'ejs';
 import { loadMovie, loadMovies } from './movies.js';
 import { renderMarkdown } from './markdown.js';
+import { getUpcomingScreenings } from './screeningsStartpage.js';
+import cmsAdapter from './cmsAdapter.js';
 
 const app = express();
 app.set('view engine', 'ejs');
@@ -44,8 +46,13 @@ app.get('/filmer/:movieId', async (req, res) => {
   }
 });
 
-app.get('api/screenings', async (req, res) => {
-  // Placeholder, delete me...
+app.get('/api/screenings', async (req, res) => {
+  const screenings = await getUpcomingScreenings(cmsAdapter);
+  // console.log(screenings.data);
+  const screeningStarttime = screenings.map(
+    (screening) => screening.attributes.start_time
+  );
+  res.render('index', { screeningStarttime });
 });
 
 app.get('api/movies/:movieID/screenings', async (req, res) => {
@@ -64,8 +71,9 @@ app.post('api/movies/:movieID/reviews', async (req, res) => {
   // Placeholder, delete me...
 });
 
-app.get('*', (req, res) => {
-  res.status(404).render('404.ejs');
-});
+// TEMPORARILY DISABLED ERROR ROUTE
+// app.get('*', (req, res) => {
+//   res.status(404).render('404.ejs');
+// });
 
 export default app;
