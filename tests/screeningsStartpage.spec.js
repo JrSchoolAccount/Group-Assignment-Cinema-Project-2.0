@@ -36,6 +36,44 @@ describe('getUpcomingScreenings()', () => {
     });
     expect(data).toHaveLength(0);
   });
+  test('maximum ten screenings', async () => {
+    const data = await getUpcomingScreenings({
+      loadAllScreenings: async () => [
+        mockScreenings({ start_time: '2024-02-04T19:00:00.000Z' }),
+        mockScreenings({ start_time: '2024-02-04T19:00:00.000Z' }),
+        mockScreenings({ start_time: '2024-02-04T19:00:00.000Z' }),
+        mockScreenings({ start_time: '2024-02-04T19:00:00.000Z' }),
+        mockScreenings({ start_time: '2024-02-04T19:00:00.000Z' }),
+        mockScreenings({ start_time: '2024-02-04T19:00:00.000Z' }),
+        mockScreenings({ start_time: '2024-02-04T19:00:00.000Z' }),
+        mockScreenings({ start_time: '2024-02-04T19:00:00.000Z' }),
+        mockScreenings({ start_time: '2024-02-04T19:00:00.000Z' }),
+        mockScreenings({ start_time: '2024-02-04T19:00:00.000Z' }),
+        mockScreenings({ start_time: '2024-02-04T19:00:00.000Z' }),
+        mockScreenings({ start_time: '2024-02-04T19:00:00.000Z' }),
+      ],
+    });
+    expect(data).toHaveLength(10);
+  });
+  test('include correct screenings', async () => {
+    const data = await getUpcomingScreenings({
+      loadAllScreenings: async () => [
+        mockScreenings({ start_time: '2023-02-04T19:00:00.000Z' }),
+        mockScreenings({ start_time: '2024-02-04T19:00:00.000Z' }),
+        mockScreenings({ start_time: '2023-02-04T19:00:00.000Z' }),
+        mockScreenings({ start_time: '2024-02-04T19:00:00.000Z' }),
+        mockScreenings({ start_time: '2023-02-04T19:00:00.000Z' }),
+        mockScreenings({ start_time: '2024-02-04T19:00:00.000Z' }),
+        mockScreenings({ start_time: '2025-02-04T19:00:00.000Z' }),
+        mockScreenings({ start_time: '2024-02-04T19:00:00.000Z' }),
+        mockScreenings({ start_time: '2025-02-04T19:00:00.000Z' }),
+        mockScreenings({ start_time: '2024-02-04T19:00:00.000Z' }),
+        mockScreenings({ start_time: '2025-02-04T19:00:00.000Z' }),
+        mockScreenings({ start_time: '2024-02-04T19:00:00.000Z' }),
+      ],
+    });
+    expect(data).toHaveLength(6);
+  });
 });
 
 function mockScreenings(attributes) {
