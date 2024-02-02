@@ -1,8 +1,17 @@
 import { describe, test, expect } from '@jest/globals';
 import { getUpcomingScreenings } from '../src/screeningsStartpage';
+import { jest } from '@jest/globals';
 
 describe('getUpcomingScreenings()', () => {
+  beforeEach(() => {
+    jest.useFakeTimers();
+  });
+  afterEach(() => {
+    jest.clearAllTimers();
+  });
+
   test('includes start time within five days', async () => {
+    jest.setSystemTime(new Date('2024-02-02T19:00:00.000Z'));
     const data = await getUpcomingScreenings({
       loadAllScreenings: async () => [
         mockScreenings({ start_time: '2024-02-05T19:00:00.000Z' }),
@@ -11,6 +20,7 @@ describe('getUpcomingScreenings()', () => {
     expect(data).toHaveLength(1);
   });
   test('excludes start time after five days', async () => {
+    jest.setSystemTime(new Date('2024-02-02T19:00:00.000Z'));
     const data = await getUpcomingScreenings({
       loadAllScreenings: async () => [
         mockScreenings({ start_time: '2024-02-14T19:00:00.000Z' }),
