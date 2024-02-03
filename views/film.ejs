@@ -56,11 +56,7 @@
       <div>
         <h2>Lägg till lista med recensioner. fetch() frontend</h2>
       </div>
-
-      <h2>Lägg till skicka in recension. Skicka med fetch() frontend</h2>
-      <a href="/review/<%= movie.id %>">
-        <button class="button__review">Make a review</button>
-      </a>
+      <%- include('../views/partials/review.ejs', { movieID: movie.id}) %>
     </main>
 
     <%- include('../views/partials/footerFilm.ejs') %>
