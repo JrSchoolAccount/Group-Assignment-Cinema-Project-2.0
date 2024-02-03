@@ -4,17 +4,21 @@ export async function submitReview() {
   const form = document.querySelector('.review__form');
   const formData = new FormData(form);
 
-  fetch('/api/movies/${formData.movie_id}/reviews', {
-    method: 'POST',
-    body: formData,
-  })
-    .then((response) => response.json())
-    .then((responseData) => {
-      console.log(responseData);
-    })
-    .catch((error) => {
-      console.error('Error', error.message);
+  try {
+    const response = await fetch('/api/movies/${formData.movie_id}/reviews', {
+      method: 'POST',
+      body: formData,
     });
+
+    if (!response.ok) {
+      throw new Error('Failed to submit review');
+    }
+
+    const responseData = await response.json();
+    console.log(responseData);
+  } catch (error) {
+    console.log(error(error.message));
+  }
 }
 
 /*const nameInput = document.getElementById('reviewer__name');
