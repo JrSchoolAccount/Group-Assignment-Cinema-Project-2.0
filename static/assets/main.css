@@ -16,7 +16,7 @@ main {
   font-size: 10px;
   list-style-type: none;
   text-decoration: none;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 * h1 {
   font-size: 3.2rem;
@@ -37,12 +37,7 @@ main {
 }
 
 body {
-  background: linear-gradient(
-    0deg,
-    rgb(34, 34, 34) 10%,
-    rgb(38, 52, 74) 60%,
-    rgb(108, 121, 126) 100%
-  );
+  background: linear-gradient(0deg, rgb(34, 34, 34) 10%, rgb(38, 52, 74) 60%, rgb(108, 121, 126) 100%);
   background-repeat: no-repeat;
   height: 100vh;
 }
@@ -108,11 +103,7 @@ body .background__raining {
 }
 
 #header {
-  background: linear-gradient(
-    0deg,
-    rgba(38, 52, 74, 0.1) 50%,
-    rgba(34, 34, 34, 0.1) 100%
-  );
+  background: linear-gradient(0deg, rgba(38, 52, 74, 0.1) 50%, rgba(34, 34, 34, 0.1) 100%);
   background-repeat: no-repeat;
   height: 0px;
   background-color: black;
@@ -255,4 +246,83 @@ article {
 }
 .about-us-body h2 {
   margin-top: 1em;
+}
+
+#review {
+  display: flex;
+  align-items: center;
+  width: 80%;
+  max-width: 370px;
+  background-color: white;
+  padding: 30px;
+  margin: 20px auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+
+#review:hover {
+  opacity: 0.9;
+}
+
+.form__group {
+  margin-bottom: 15px;
+  width: 90%; /* Adjust based on preference */
+}
+
+.form__group label {
+  font-size: 23px;
+  margin-right: 230px;
+}
+
+.name__input {
+  width: 100%; /* Ensures inputs take full width of form-group */
+  padding: 8px;
+  margin: 5px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 23px;
+}
+
+input[type=text],
+input[type=number],
+textarea {
+  width: 100%; /* Ensures inputs take full width of form-group */
+  padding: 8px;
+  margin: 5px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box; /* Makes sure padding does not affect the total width */
+  font-size: 23px;
+}
+
+textarea {
+  height: 150px;
+  min-height: 130px;
+  resize: vertical;
+}
+
+input[type=submit] {
+  width: auto;
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+textarea {
+  height: 100px; /* Adjust height as needed */
+  resize: vertical; /* Allows the user to vertically resize the textarea */
 }
