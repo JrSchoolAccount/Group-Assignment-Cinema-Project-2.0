@@ -16,7 +16,7 @@ main {
   font-size: 10px;
   list-style-type: none;
   text-decoration: none;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 * h1 {
   font-size: 3.2rem;
@@ -37,12 +37,7 @@ main {
 }
 
 body {
-  background: linear-gradient(
-    0deg,
-    rgb(34, 34, 34) 10%,
-    rgb(38, 52, 74) 60%,
-    rgb(108, 121, 126) 100%
-  );
+  background: linear-gradient(0deg, rgb(34, 34, 34) 10%, rgb(38, 52, 74) 60%, rgb(108, 121, 126) 100%);
   background-repeat: no-repeat;
   height: 100vh;
 }
@@ -108,11 +103,7 @@ body .background__raining {
 }
 
 #header {
-  background: linear-gradient(
-    0deg,
-    rgba(38, 52, 74, 0.1) 50%,
-    rgba(34, 34, 34, 0.1) 100%
-  );
+  background: linear-gradient(0deg, rgba(38, 52, 74, 0.1) 50%, rgba(34, 34, 34, 0.1) 100%);
   background-repeat: no-repeat;
   height: 0px;
   background-color: black;
@@ -217,13 +208,16 @@ body .background__raining {
 .about-us-body {
   height: 100%;
 }
+
 .about-us-body .background__raining {
   opacity: 0.7;
 }
+
 .about-us-body p {
   margin: 0.5em 35% 2em 35%;
   text-align: left;
 }
+
 .about-us-body h2 {
   margin-top: 1em;
 }
@@ -255,4 +249,18 @@ article {
 
 .movie img {
   max-width: 60em;
+}
+
+.about-us-body {
+  height: 100%;
+}
+.about-us-body .background__raining {
+  opacity: 0.7;
+}
+.about-us-body p {
+  margin: 0.5em 35% 2em 35%;
+  text-align: left;
+}
+.about-us-body h2 {
+  margin-top: 1em;
 }

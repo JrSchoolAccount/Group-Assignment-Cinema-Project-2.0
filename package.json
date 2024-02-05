@@ -7,7 +7,8 @@
   "scripts": {
     "dev": "nodemon .",
     "start": "node .",
-    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest"
+    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest",
+    "sass:watch": "sass --no-source-map --watch static/src/main.scss static/assets/main.css"
   },
   "author": "JR",
   "license": "ISC",
@@ -21,6 +22,7 @@
     "cross-env": "^7.0.3",
     "jest": "^29.7.0",
     "nodemon": "^3.0.2",
-    "supertest": "^6.3.4"
+    "supertest": "^6.3.4",
+    "sass": "^1.70.0"
   }
 }
