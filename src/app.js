@@ -3,8 +3,15 @@ import fs from 'fs/promises';
 import ejs from 'ejs';
 import { loadMovie, loadMovies } from './movies.js';
 import { renderMarkdown } from './markdown.js';
+import { loadReviews, createReview } from './movies.js';
+// import api from './review.js';
+// import cookieParser from "cookie-parser";
 
 const app = express();
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+// app.use(cookieParser());
+
 app.set('view engine', 'ejs');
 app.set('views', './views');
 
@@ -33,8 +40,10 @@ app.get('/filmer', async (req, res) => {
 
 app.get('/filmer/:movieId', async (req, res) => {
   try {
-    const movie = await loadMovie(req.params.movieId);
-    res.render('film', { movie, renderMarkdown });
+    const movieId = req.params.movieId; 
+    const movie = await loadMovie(movieId);
+    const reviews = await loadReviews(movieId); 
+    res.render('film', { movie, reviews, renderMarkdown });
   } catch (error) {
     if (error.message === 'Movie not found') {
       res.status(404).render('filmer404');
@@ -43,6 +52,16 @@ app.get('/filmer/:movieId', async (req, res) => {
     }
   }
 });
+
+app.post("/movies/:movieId/reviews", async (req, res) => {
+  const name = req.body.name;
+  const rating = req.body.rating;
+  console.log("Rating:", rating);
+  await createReview(req.params.movieId, name, req.body.comment, rating);  
+ 
+   res.redirect(`/filmer/${req.params.movieId}`);
+});
+
 
 app.get('api/screenings', async (req, res) => {
   // Placeholder, delete me...
