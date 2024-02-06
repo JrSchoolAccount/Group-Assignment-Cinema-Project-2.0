@@ -3,7 +3,7 @@ import fs from 'fs/promises';
 import ejs from 'ejs';
 import { loadMovie, loadMovies } from './movies.js';
 import { renderMarkdown } from './markdown.js';
-import { getUpcomingScreenings } from './screeningsStartpage.js';
+import { getUpcomingScreenings } from './screeningsFromAPI.js';
 import cmsAdapter from './cmsAdapter.js';
 
 const app = express();
@@ -67,9 +67,8 @@ app.post('api/movies/:movieID/reviews', async (req, res) => {
   // Placeholder, delete me...
 });
 
-// TEMPORARILY DISABLED ERROR ROUTE
-// app.get('*', (req, res) => {
-//   res.status(404).render('404.ejs');
-// });
+app.get('*', (req, res) => {
+  res.status(404).render('404.ejs');
+});
 
 export default app;
