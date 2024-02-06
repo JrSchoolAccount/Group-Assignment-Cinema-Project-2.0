@@ -8,5 +8,17 @@ export async function loadMovieReviews(movieId, page) {
   );
   const payload = await res.json();
 
-  return payload;
+  const reviews = payload.data.map((data) => ({
+    id: data.id,
+    reviewer: data.attributes.author,
+    rating: data.attributes.rating,
+    comment: data.attributes.comment,
+  }));
+
+  const formattedRes = {
+    review: reviews,
+    pagination: payload.meta.pagination,
+  };
+
+  return formattedRes;
 }
