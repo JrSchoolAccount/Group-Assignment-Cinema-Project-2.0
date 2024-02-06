@@ -1,9 +1,11 @@
 import express from 'express';
 import fs from 'fs/promises';
 import ejs from 'ejs';
-import { loadMovie, loadMovies } from './movies.js';
+import { loadMovie, loadMovies, loadScreenings } from './movies.js';
 import { renderMarkdown } from './markdown.js';
 import { loadMovieReviews } from './movieReviews.js';
+import { getUpcomingScreenings } from './screeningsFromAPI.js';
+import cmsAdapter from './cmsAdapter.js';
 
 const app = express();
 app.set('view engine', 'ejs');
@@ -34,7 +36,9 @@ app.get('/filmer', async (req, res) => {
 
 app.get('/filmer/:movieId', async (req, res) => {
   try {
-    const movie = await loadMovie(req.params.movieId);
+    const movieId = req.params.movieId;
+    const movie = await loadMovie(movieId);
+
     res.render('film', { movie, renderMarkdown });
   } catch (error) {
     if (error.message === 'Movie not found') {
@@ -45,16 +49,29 @@ app.get('/filmer/:movieId', async (req, res) => {
   }
 });
 
-app.get('api/screenings', async (req, res) => {
-  // Placeholder, delete me...
+
+app.get('/api/screenings', async (req, res) => {
+  const upcomingScreenings = await getUpcomingScreenings(cmsAdapter);
+  res.send(upcomingScreenings);
 });
 
-app.get('api/movies/:movieID/screenings', async (req, res) => {
-  // Placeholder, delete me...
-});
+app.get('/api/movies/:movieID/screenings', async (req, res) => {
+  try {
+    const movieId = req.params.movieID;
+    const screenings = await loadScreenings(movieId);
+    const currentTime = new Date().getTime();
+    const upcomingScreenings = screenings.data.filter((screening) => {
+      return new Date(screening.attributes.start_time).getTime() >= currentTime;
+    });
 
-app.get('api/movies/:movieID/rating', async (req, res) => {
-  // Placeholder, delete me...
+    res.json({ data: upcomingScreenings });
+  } catch (error) {
+    if (error.message === 'Screening not found') {
+      res.status(404).render('screening404');
+    } else {
+      res.status(500).send('Internal Server Error');
+    }
+  }
 });
 
 app.get('/api/movies/:movieId/reviews', async (req, res) => {
@@ -68,10 +85,6 @@ app.get('/api/movies/:movieId/reviews', async (req, res) => {
     console.error('Error loading reviews:', error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
-});
-
-app.post('api/movies/:movieID/reviews', async (req, res) => {
-  // Placeholder, delete me...
 });
 
 app.get('*', (req, res) => {
