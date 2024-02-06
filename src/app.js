@@ -1,9 +1,10 @@
 import express from 'express';
 import fs from 'fs/promises';
 import ejs from 'ejs';
-import { loadMovie, loadMovies, loadScreenings } from './movies.js';
+import { loadMovie, loadMovies } from './movies.js';
 import { renderMarkdown } from './markdown.js';
 import { getUpcomingScreenings } from './screeningsFromAPI.js';
+import { getUpcomingMovieScreenings } from './upcomingScreeningsFromApi.js';
 import cmsAdapter from './cmsAdapter.js';
 
 const app = express();
@@ -48,13 +49,21 @@ app.get('/filmer/:movieId', async (req, res) => {
   }
 });
 
-
 app.get('/api/screenings', async (req, res) => {
   const upcomingScreenings = await getUpcomingScreenings(cmsAdapter);
   res.send(upcomingScreenings);
 });
 
 app.get('/api/movies/:movieID/screenings', async (req, res) => {
+  const movieId = req.params.movieID;
+  const upcomingMovieScreenings = await getUpcomingMovieScreenings(
+    cmsAdapter,
+    movieId
+  );
+  res.json(upcomingMovieScreenings);
+});
+
+/* app.get('/api/movies/:movieID/screenings', async (req, res) => {
   try {
     const movieId = req.params.movieID;
     const screenings = await loadScreenings(movieId);
@@ -71,7 +80,7 @@ app.get('/api/movies/:movieID/screenings', async (req, res) => {
       res.status(500).send('Internal Server Error');
     }
   }
-});
+}); */
 
 app.get('*', (req, res) => {
   res.status(404).render('404.ejs');

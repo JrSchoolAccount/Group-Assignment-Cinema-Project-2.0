@@ -8,6 +8,13 @@ const cmsAdapter = {
     const payload = await res.json();
     return payload.data;
   },
+  async loadUpcomingScreenings(id) {
+    const res = await fetch(
+      API_BASE + '/screenings?populate=movie&filters[movie]=' + id
+    );
+    const payload = await res.json();
+    return payload;
+  },
 };
 
 export default cmsAdapter;
