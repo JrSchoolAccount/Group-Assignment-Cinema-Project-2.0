@@ -3,6 +3,8 @@ import fs from 'fs/promises';
 import ejs from 'ejs';
 import { loadMovie, loadMovies, loadScreenings } from './movies.js';
 import { renderMarkdown } from './markdown.js';
+import { getUpcomingScreenings } from './screeningsFromAPI.js';
+import cmsAdapter from './cmsAdapter.js';
 
 const app = express();
 app.set('view engine', 'ejs');
@@ -46,11 +48,16 @@ app.get('/filmer/:movieId', async (req, res) => {
   }
 });
 
+
+app.get('/api/screenings', async (req, res) => {
+  const upcomingScreenings = await getUpcomingScreenings(cmsAdapter);
+  res.send(upcomingScreenings);
+});
+
 app.get('/api/movies/:movieID/screenings', async (req, res) => {
   try {
     const movieId = req.params.movieID;
     const screenings = await loadScreenings(movieId);
-
     const currentTime = new Date().getTime();
     const upcomingScreenings = screenings.data.filter((screening) => {
       return new Date(screening.attributes.start_time).getTime() >= currentTime;
