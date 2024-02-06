@@ -12,11 +12,7 @@ const fetchReviews = async (page) => {
     const data = await res.json();
     const reviews = data.reviews.review;
 
-    const startIndex = (currentPage - 1) * pageSize;
-    const endIndex = startIndex + pageSize;
-    const reviewsToShow = reviews.slice(startIndex, endIndex);
-
-    renderReviews(reviewsToShow);
+    renderReviews(reviews);
 
     prevButton.disabled = page === 1;
     nextButton.disabled = reviews.length < pageSize;
