@@ -248,6 +248,35 @@ body .background__raining {
     opacity: 1;
   }
 }
+main li a {
+  font-size: 2em;
+  color: rgba(255, 255, 255, 0.781);
+}
+
+main li :hover {
+  font-size: 2.1em;
+  color: white;
+}
+
+main a {
+  font-size: 2em;
+  color: white;
+}
+
+article {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.intro {
+  margin-bottom: 1em;
+}
+
+.movie img {
+  max-width: 60em;
+}
+
 .about-us-body {
   height: 100%;
 }
@@ -261,10 +290,8 @@ body .background__raining {
 .about-us-body h2 {
   margin-top: 1em;
 }
+
 #screening-list li {
   color: red;
   font-size: 4em;
 }
-
-/*# sourceMappingURL=main.css.map */
-
