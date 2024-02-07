@@ -23,21 +23,28 @@ const fetchReviews = async (page) => {
 
 const renderReviews = (reviews) => {
   reviews.forEach((review) => {
+    const name = review.reviewer || '';
+
     const reviewDiv = document.createElement('div');
+    reviewDiv.classList.add('review');
 
-    const reviewerP = document.createElement('p');
-    const reviewStrong = document.createElement('strong');
+    const reviewHeader = document.createElement('div');
+    reviewHeader.classList.add('review_header');
 
-    reviewStrong.textContent = 'Namn: ' + review.reviewer;
-    reviewerP.appendChild(reviewStrong);
-    reviewerP.appendChild(
-      document.createTextNode(`- Rating: ${review.rating}`)
-    );
+    const reviewerName = document.createElement('p');
+    reviewerName.textContent = 'Namn: ' + name;
+
+    const reviewRating = document.createElement('p');
+    reviewRating.textContent = `Betyg: ${review.rating}`;
 
     const commentP = document.createElement('p');
-    commentP.textContent = 'Kommentar: ' + review.comment;
+    commentP.classList.add('review_comment');
+    commentP.textContent = review.comment;
 
-    reviewDiv.appendChild(reviewerP);
+    reviewHeader.appendChild(reviewerName);
+    reviewHeader.appendChild(reviewRating);
+
+    reviewDiv.appendChild(reviewHeader);
     reviewDiv.appendChild(commentP);
 
     reviewsContainer.appendChild(reviewDiv);

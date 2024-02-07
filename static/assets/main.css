@@ -248,6 +248,23 @@ body .background__raining {
     opacity: 1;
   }
 }
+.about-us-body {
+  height: 100%;
+}
+
+.about-us-body .background__raining {
+  opacity: 0.7;
+}
+
+.about-us-body p {
+  margin: 0.5em 35% 2em 35%;
+  text-align: left;
+}
+
+.about-us-body h2 {
+  margin-top: 1em;
+}
+
 main li a {
   font-size: 2em;
   color: rgba(255, 255, 255, 0.781);
@@ -289,6 +306,39 @@ article {
 }
 .about-us-body h2 {
   margin-top: 1em;
+}
+
+.container_reviews {
+  color: #585e59;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 8em auto 0 auto;
+  padding-bottom: 8em;
+  padding: 2em;
+  text-align: center;
+  width: 30%;
+}
+.container_reviews .review {
+  background-color: rgba(0, 0, 0, 0.349);
+  box-shadow: 0.2px 0.2px 0.2px rgb(102, 102, 102);
+  margin: 0.1em;
+}
+.container_reviews .review .review_header {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.container_reviews .review .review_header .reviewer_name {
+  align-self: flex-start;
+}
+.container_reviews .review .review_header .review_rating {
+  align-self: flex-end;
+}
+.container_reviews p {
+  margin: 0.4em;
 }
 
 #screening-list li {
