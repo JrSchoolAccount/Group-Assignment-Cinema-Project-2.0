@@ -22,6 +22,8 @@ const fetchReviews = async (page) => {
 };
 
 const renderReviews = (reviews) => {
+  clearReviewsContainer();
+
   reviews.forEach((review) => {
     const name = review.reviewer || '';
 
@@ -33,9 +35,11 @@ const renderReviews = (reviews) => {
 
     const reviewerName = document.createElement('p');
     reviewerName.textContent = 'Namn: ' + name;
+    reviewerName.classList.add('reviewer_name');
 
     const reviewRating = document.createElement('p');
     reviewRating.textContent = `Betyg: ${review.rating}`;
+    reviewRating.classList.add('review_rating');
 
     const commentP = document.createElement('p');
     commentP.classList.add('review_comment');
@@ -49,6 +53,12 @@ const renderReviews = (reviews) => {
 
     reviewsContainer.appendChild(reviewDiv);
   });
+};
+
+const clearReviewsContainer = () => {
+  while (reviewsContainer.firstChild) {
+    reviewsContainer.removeChild(reviewsContainer.firstChild);
+  }
 };
 
 fetchReviews(currentPage);
