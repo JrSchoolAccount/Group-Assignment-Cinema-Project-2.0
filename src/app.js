@@ -55,12 +55,19 @@ app.get('/api/screenings', async (req, res) => {
 });
 
 app.get('/api/movies/:movieID/screenings', async (req, res) => {
-  const movieId = req.params.movieID;
-  const upcomingMovieScreenings = await getUpcomingMovieScreenings(
-    cmsAdapter,
-    movieId
-  );
-  res.json(upcomingMovieScreenings);
+  try {
+    const movieId = req.params.movieID;
+    const upcomingMovieScreenings = await getUpcomingMovieScreenings(
+      cmsAdapter,
+      movieId
+    );
+    res.json(upcomingMovieScreenings);
+  } catch (error) {
+    console.error('Could not fetch upcoming movie screening:', error);
+    res
+      .status(500)
+      .json({ error: 'Got an error when trying to fetch upcoming screenings' });
+  }
 });
 
 app.get('*', (req, res) => {
