@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       const listItem = document.createElement('li');
       const startTime = new Date(screening.attributes.start_time);
       const formatDate = startTime.toLocaleDateString('sv-Se');
-      const formatTime = startTime.toLocaleTimeString('sv-SE');
+      const formatTime = startTime.toLocaleString('sv-SE', { timeZone: 'UTC' });
       const formattedDateTime = `${formatDate}, ${formatTime}`;
       listItem.textContent = `Datum: ${formattedDateTime}, Plats: ${screening.attributes.room}`;
       screeningsList.appendChild(listItem);
