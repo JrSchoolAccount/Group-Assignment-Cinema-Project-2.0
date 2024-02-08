@@ -1,5 +1,5 @@
 export async function renderUpcomingScreenings() {
-  const res = await fetch('http://localhost:5080/api/screenings');
+  const res = await fetch('api/screenings');
   const payload = await res.json();
 
   // Create headline for "nästkommande visningar"
