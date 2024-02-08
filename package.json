@@ -5,6 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "sass:watch": "sass --no-source-map --watch static/src/main.scss static/assets/main.css",
     "dev": "nodemon .",
     "start": "node .",
     "sassy": "sass --no-source-map --watch static/src/main.scss static/assets/main.css",

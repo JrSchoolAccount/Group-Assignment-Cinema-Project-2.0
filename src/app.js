@@ -5,8 +5,15 @@ import { loadMovie, loadMovies, loadScreenings } from './movies.js';
 import { renderMarkdown } from './markdown.js';
 import { getUpcomingScreenings } from './screeningsFromAPI.js';
 import cmsAdapter from './cmsAdapter.js';
+import { loadReviews, createReview } from './movies.js';
+// import api from './review.js';
+// import cookieParser from "cookie-parser";
 
 const app = express();
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+// app.use(cookieParser());
+
 app.set('view engine', 'ejs');
 app.set('views', './views');
 
@@ -35,10 +42,10 @@ app.get('/filmer', async (req, res) => {
 
 app.get('/filmer/:movieId', async (req, res) => {
   try {
-    const movieId = req.params.movieId;
+    const movieId = req.params.movieId; 
     const movie = await loadMovie(movieId);
-
-    res.render('film', { movie, renderMarkdown });
+    const reviews = await loadReviews(movieId); 
+    res.render('film', { movie, reviews, renderMarkdown });
   } catch (error) {
     if (error.message === 'Movie not found') {
       res.status(404).render('filmer404');
@@ -52,6 +59,19 @@ app.get('/filmer/:movieId', async (req, res) => {
 app.get('/api/screenings', async (req, res) => {
   const upcomingScreenings = await getUpcomingScreenings(cmsAdapter);
   res.send(upcomingScreenings);
+});
+app.post("/movies/:movieId/reviews", async (req, res) => {
+  const name = req.body.name;
+  const rating = req.body.rating;
+  console.log("Rating:", rating);
+  await createReview(req.params.movieId, name, req.body.comment, rating);  
+ 
+   res.redirect(`/filmer/${req.params.movieId}`);
+});
+
+
+app.get('api/screenings', async (req, res) => {
+  // Placeholder, delete me...
 });
 
 app.get('/api/movies/:movieID/screenings', async (req, res) => {
