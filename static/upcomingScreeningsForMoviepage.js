@@ -8,6 +8,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     const screeningsList = document.getElementById('screening-list');
     screeningsList.innerHTML = '';
 
+    const headline = document.createElement('h1');
+    headline.textContent = 'Kommande Visningar';
+    screeningsList.appendChild(headline);
+
     screeningsData.data.sort((a, b) => {
       const startTimeA = new Date(a.attributes.start_time).getTime();
       const StartTimeB = new Date(b.attributes.start_time).getTime();
@@ -19,6 +23,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       const formatDate = startTime.toLocaleDateString('sv-Se');
       const formatTime = startTime.toLocaleString('sv-SE', { timeZone: 'UTC' });
       const formattedDateTime = `${formatDate}, ${formatTime}`;
+      headline.textContent = 'Kommande visningar';
       listItem.textContent = `Datum: ${formattedDateTime}, Plats: ${screening.attributes.room}`;
       screeningsList.appendChild(listItem);
     });
