@@ -1,18 +1,16 @@
 import express from 'express';
 import fs from 'fs/promises';
 import ejs from 'ejs';
-import bodyParser from 'body-parser';
 import { loadMovie, loadMovies } from './movies.js';
 import { renderMarkdown } from './markdown.js';
-import { submitReview } from './review.js';
 
 const app = express();
 app.set('view engine', 'ejs');
 app.set('views', './views');
 
-app.use(bodyParser.urlencoded({ extended: true }));
-
 app.use('/static', express.static('./static'));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 app.get('/', async (req, res) => {
   res.render('index');
@@ -71,20 +69,21 @@ app.get('api/movies/:movieID/reviews', async (req, res) => {});
 //Simons post request
 app.post('/api/movies/:movieID/reviews', async (req, res) => {
   const formData = req.body;
-  console.log(formData);
-
   const reviewerName = formData.reviewer_name;
   const rating = formData.rating;
   const reviewText = formData.review_text;
   const movieID = req.params.movieID;
 
-  res.json({
+  const responseData = {
     message: 'Review submitted successfully',
     reviewerName,
     rating,
     reviewText,
     movieID,
-  });
+    redirectUrl: `http://localhost:5080/`,
+  };
+  res.json(responseData);
+  console.log(responseData);
 });
 
 app.get('*', (req, res) => {
