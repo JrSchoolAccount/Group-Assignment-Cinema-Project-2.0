@@ -6,6 +6,7 @@ import { renderMarkdown } from './markdown.js';
 import { getUpcomingScreenings } from './screeningsFromAPI.js';
 import { getUpcomingMovieScreenings } from './upcomingScreeningsFromApi.js';
 import cmsAdapter from './cmsAdapter.js';
+import getRecentReviews from './getRecentReviews.js';
 
 const app = express();
 app.set('view engine', 'ejs');
@@ -63,24 +64,10 @@ app.get('/api/movies/:movieID/screenings', async (req, res) => {
   res.json(upcomingMovieScreenings);
 });
 
-/* app.get('/api/movies/:movieID/screenings', async (req, res) => {
-  try {
-    const movieId = req.params.movieID;
-    const screenings = await loadScreenings(movieId);
-    const currentTime = new Date().getTime();
-    const upcomingScreenings = screenings.data.filter((screening) => {
-      return new Date(screening.attributes.start_time).getTime() >= currentTime;
-    });
-
-    res.json({ data: upcomingScreenings });
-  } catch (error) {
-    if (error.message === 'Screening not found') {
-      res.status(404).render('screening404');
-    } else {
-      res.status(500).send('Internal Server Error');
-    }
-  }
-}); */
+app.get('/api/recent-reviews', async (req, res) => {
+  const data = await getRecentReviews(cmsAdapter);
+  res.status(200).json(data);
+});
 
 app.get('*', (req, res) => {
   res.status(404).render('404.ejs');
