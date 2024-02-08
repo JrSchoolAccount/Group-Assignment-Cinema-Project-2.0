@@ -12,21 +12,29 @@ document.addEventListener('DOMContentLoaded', async () => {
     headline.textContent = 'Kommande Visningar';
     screeningsList.appendChild(headline);
 
-    screeningsData.data.sort((a, b) => {
-      const startTimeA = new Date(a.attributes.start_time).getTime();
-      const StartTimeB = new Date(b.attributes.start_time).getTime();
-      return startTimeA - StartTimeB;
-    });
-    screeningsData.data.forEach((screening) => {
-      const listItem = document.createElement('li');
-      const startTime = new Date(screening.attributes.start_time);
-      const formatDate = startTime.toLocaleDateString('sv-Se');
-      const formatTime = startTime.toLocaleString('sv-SE', { timeZone: 'UTC' });
-      const formattedDateTime = `${formatDate}, ${formatTime}`;
-      headline.textContent = 'Kommande visningar';
-      listItem.textContent = `Datum: ${formattedDateTime}, Plats: ${screening.attributes.room}`;
-      screeningsList.appendChild(listItem);
-    });
+    if (screeningsData.data.length === 0) {
+      const noScreeningsMessage = document.createElement('p');
+      noScreeningsMessage.textContent = 'Inga kommande visninbgar';
+      screeningsList.appendChild(noScreeningsMessage);
+    } else {
+      screeningsData.data.sort((a, b) => {
+        const startTimeA = new Date(a.attributes.start_time).getTime();
+        const StartTimeB = new Date(b.attributes.start_time).getTime();
+        return startTimeA - StartTimeB;
+      });
+      screeningsData.data.forEach((screening) => {
+        const listItem = document.createElement('li');
+        const startTime = new Date(screening.attributes.start_time);
+        const formatDate = startTime.toLocaleDateString('sv-Se');
+        const formatTime = startTime.toLocaleString('sv-SE', {
+          timeZone: 'UTC',
+        });
+        const formattedDateTime = `${formatDate}, ${formatTime}`;
+        headline.textContent = 'Kommande visningar';
+        listItem.textContent = `Datum: ${formattedDateTime}, Plats: ${screening.attributes.room}`;
+        screeningsList.appendChild(listItem);
+      });
+    }
   } catch (error) {
     console.error('Error loading screenings:', error);
   }
