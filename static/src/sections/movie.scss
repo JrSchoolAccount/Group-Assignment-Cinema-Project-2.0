@@ -1,4 +1,62 @@
-#screening-list li {
-  color: red;
-  font-size: 4em;
+#screening-list {
+  text-align: center;
+  width: 50%;
+  margin: 8em auto 0 auto;
+  color: white;
+  background-color: rgba(14, 88, 88, 0.521);
+  border: 2px gray solid;
+  border-radius: 5px;
+  padding: 2em;
+  padding-bottom: 8em;
+  li {
+    margin-top: 0.5em;
+    font-size: 2em;
+  }
 }
+/* .upcomingMovies {
+  text-align: center;
+  width: 50%;
+  margin: 8em auto 0 auto;
+  color: white;
+  background-color: rgba(14, 88, 88, 0.521);
+  border: 2px gray solid;
+  border-radius: 5px;
+  padding: 2em;
+  padding-bottom: 8em;
+  ul {
+    text-align: left;
+    list-style-type: none;
+    padding: 0;
+    width: fit-content;
+    margin: 0 auto;
+  }
+  h2 {
+    font-size: 3em;
+  }
+  h3 {
+    font-size: 2em;
+    margin-top: 2em;
+  }
+  li {
+    margin-top: 0.5em;
+    font-size: 2em;
+    .screeningTime {
+      font-weight: bold;
+      font-size: 1.005em;
+      color: rgb(177, 175, 175);
+    }
+    .screeningMovie {
+      font-weight: bold;
+      color: rgb(235, 185, 160);
+      padding-left: 0.5em;
+      font-size: 1em;
+      &:hover {
+        color: rgb(241, 51, 51);
+      }
+    }
+    .screeningRoom {
+      //nothing so far
+    }
+  }
+}
+ */

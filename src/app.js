@@ -6,7 +6,6 @@ import { renderMarkdown } from './markdown.js';
 import { getUpcomingScreenings } from './screeningsFromAPI.js';
 import { getUpcomingMovieScreenings } from './upcomingScreeningsFromApi.js';
 import cmsAdapter from './cmsAdapter.js';
-import getRecentReviews from './getRecentReviews.js';
 
 const app = express();
 app.set('view engine', 'ejs');
@@ -62,11 +61,6 @@ app.get('/api/movies/:movieID/screenings', async (req, res) => {
     movieId
   );
   res.json(upcomingMovieScreenings);
-});
-
-app.get('/api/recent-reviews', async (req, res) => {
-  const data = await getRecentReviews(cmsAdapter);
-  res.status(200).json(data);
 });
 
 app.get('*', (req, res) => {
