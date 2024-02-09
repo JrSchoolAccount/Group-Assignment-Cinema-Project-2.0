@@ -341,7 +341,18 @@ article {
   margin: 0.4em;
 }
 
+#screening-list {
+  text-align: center;
+  width: 50%;
+  margin: 8em auto 0 auto;
+  color: white;
+  background-color: rgba(14, 88, 88, 0.521);
+  border: 2px gray solid;
+  border-radius: 5px;
+  padding: 2em;
+  padding-bottom: 8em;
+}
 #screening-list li {
-  color: red;
-  font-size: 4em;
+  margin-top: 0.5em;
+  font-size: 2em;
 }
