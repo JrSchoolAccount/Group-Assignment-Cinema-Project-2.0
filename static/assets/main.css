@@ -37,12 +37,7 @@ main {
 }
 
 body {
-  background: linear-gradient(
-    0deg,
-    rgb(34, 34, 34) 10%,
-    rgb(38, 52, 74) 60%,
-    rgb(108, 121, 126) 100%
-  );
+  background: linear-gradient(0deg, rgb(34, 34, 34) 10%, rgb(38, 52, 74) 60%, rgb(108, 121, 126) 100%);
   background-repeat: no-repeat;
   height: 100vh;
 }
@@ -108,11 +103,7 @@ body .background__raining {
 }
 
 #header {
-  background: linear-gradient(
-    0deg,
-    rgba(38, 52, 74, 0.1) 50%,
-    rgba(34, 34, 34, 0.1) 100%
-  );
+  background: linear-gradient(0deg, rgba(38, 52, 74, 0.1) 50%, rgba(34, 34, 34, 0.1) 100%);
   background-repeat: no-repeat;
   height: 0px;
   background-color: black;
@@ -300,9 +291,20 @@ article {
   margin-top: 1em;
 }
 
+#screening-list {
+  text-align: center;
+  width: 50%;
+  margin: 8em auto 0 auto;
+  color: white;
+  background-color: rgba(14, 88, 88, 0.521);
+  border: 2px gray solid;
+  border-radius: 5px;
+  padding: 2em;
+  padding-bottom: 8em;
+}
 #screening-list li {
-  color: red;
-  font-size: 4em;
+  margin-top: 0.5em;
+  font-size: 2em;
 }
 
 #review {
