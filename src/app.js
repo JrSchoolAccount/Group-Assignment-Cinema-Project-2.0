@@ -56,7 +56,7 @@ app.get('/filmer/:movieId', async (req, res) => {
 app.post("/movies/:movieId/reviews", async (req, res) => {
   const name = req.body.name;
   const rating = req.body.rating;
-  console.log("Rating:", rating);
+  console.log('Rating:', rating);
   await createReview(req.params.movieId, name, req.body.comment, rating);  
  
    res.redirect(`/filmer/${req.params.movieId}`);
