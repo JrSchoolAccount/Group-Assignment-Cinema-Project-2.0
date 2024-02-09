@@ -1,9 +1,10 @@
 import express from 'express';
 import fs from 'fs/promises';
 import ejs from 'ejs';
-import { loadMovie, loadMovies, loadScreenings } from './movies.js';
+import { loadMovie, loadMovies } from './movies.js';
 import { renderMarkdown } from './markdown.js';
 import { getUpcomingScreenings } from './screeningsFromAPI.js';
+import { getUpcomingMovieScreenings } from './upcomingScreeningsFromApi.js';
 import cmsAdapter from './cmsAdapter.js';
 
 const app = express();
@@ -48,7 +49,6 @@ app.get('/filmer/:movieId', async (req, res) => {
   }
 });
 
-
 app.get('/api/screenings', async (req, res) => {
   const upcomingScreenings = await getUpcomingScreenings(cmsAdapter);
   res.send(upcomingScreenings);
@@ -57,19 +57,16 @@ app.get('/api/screenings', async (req, res) => {
 app.get('/api/movies/:movieID/screenings', async (req, res) => {
   try {
     const movieId = req.params.movieID;
-    const screenings = await loadScreenings(movieId);
-    const currentTime = new Date().getTime();
-    const upcomingScreenings = screenings.data.filter((screening) => {
-      return new Date(screening.attributes.start_time).getTime() >= currentTime;
-    });
-
-    res.json({ data: upcomingScreenings });
+    const upcomingMovieScreenings = await getUpcomingMovieScreenings(
+      cmsAdapter,
+      movieId
+    );
+    res.json(upcomingMovieScreenings);
   } catch (error) {
-    if (error.message === 'Screening not found') {
-      res.status(404).render('screening404');
-    } else {
-      res.status(500).send('Internal Server Error');
-    }
+    console.error('Could not fetch upcoming movie screening:', error);
+    res
+      .status(500)
+      .json({ error: 'Got an error when trying to fetch upcoming screenings' });
   }
 });
 
