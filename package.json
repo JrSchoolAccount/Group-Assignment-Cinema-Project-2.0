@@ -4,6 +4,9 @@
   "description": "",
   "main": "index.js",
   "type": "module",
+  "jest": {
+    "transform": {}
+  },
   "scripts": {
     "dev": "nodemon .",
     "start": "node .",
