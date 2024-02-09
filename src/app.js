@@ -3,10 +3,11 @@ import fs from 'fs/promises';
 import ejs from 'ejs';
 import { loadMovie, loadMovies } from './movies.js';
 import { renderMarkdown } from './markdown.js';
-import { loadReviews, createReview } from './movies.js';
+import { loadReviews, createReview } from './reviews.js';
 import { getUpcomingScreenings } from './screeningsFromAPI.js';
 import { getUpcomingMovieScreenings } from './upcomingScreeningsFromApi.js';
 import cmsAdapter from './cmsAdapter.js';
+
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
