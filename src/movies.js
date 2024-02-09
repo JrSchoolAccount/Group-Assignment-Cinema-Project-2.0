@@ -2,6 +2,14 @@ import fetch from 'node-fetch';
 
 const API_BASE = 'https://plankton-app-xhkom.ondigitalocean.app/api';
 
+export async function loadScreenings(id) {
+  const res = await fetch(
+    API_BASE + '/screenings?populate=movie&filters[movie]=' + id
+  );
+  const payload = await res.json();
+  return payload;
+}
+
 export async function loadMovies() {
   const res = await fetch(API_BASE + '/movies');
   const payload = await res.json();

@@ -37,7 +37,12 @@ main {
 }
 
 body {
-  background: linear-gradient(0deg, rgb(34, 34, 34) 10%, rgb(38, 52, 74) 60%, rgb(108, 121, 126) 100%);
+  background: linear-gradient(
+    0deg,
+    rgb(34, 34, 34) 10%,
+    rgb(38, 52, 74) 60%,
+    rgb(108, 121, 126) 100%
+  );
   background-repeat: no-repeat;
   height: 100vh;
 }
@@ -103,7 +108,11 @@ body .background__raining {
 }
 
 #header {
-  background: linear-gradient(0deg, rgba(38, 52, 74, 0.1) 50%, rgba(34, 34, 34, 0.1) 100%);
+  background: linear-gradient(
+    0deg,
+    rgba(38, 52, 74, 0.1) 50%,
+    rgba(34, 34, 34, 0.1) 100%
+  );
   background-repeat: no-repeat;
   height: 0px;
   background-color: black;
@@ -151,6 +160,49 @@ body .background__raining {
   z-index: 2;
 }
 
+.upcomingMovies {
+  text-align: center;
+  width: 50%;
+  margin: 8em auto 0 auto;
+  color: white;
+  background-color: rgba(14, 88, 88, 0.521);
+  border: 2px gray solid;
+  border-radius: 5px;
+  padding: 2em;
+  padding-bottom: 8em;
+}
+.upcomingMovies ul {
+  text-align: left;
+  list-style-type: none;
+  padding: 0;
+  width: fit-content;
+  margin: 0 auto;
+}
+.upcomingMovies h2 {
+  font-size: 3em;
+}
+.upcomingMovies h3 {
+  font-size: 2em;
+  margin-top: 2em;
+}
+.upcomingMovies li {
+  margin-top: 0.5em;
+  font-size: 2em;
+}
+.upcomingMovies li .screeningTime {
+  font-weight: bold;
+  font-size: 1.005em;
+  color: rgb(177, 175, 175);
+}
+.upcomingMovies li .screeningMovie {
+  font-weight: bold;
+  color: rgb(235, 185, 160);
+  padding-left: 0.5em;
+  font-size: 1em;
+}
+.upcomingMovies li .screeningMovie:hover {
+  color: rgb(241, 51, 51);
+}
 .herobanner_item {
   display: none;
 }
@@ -246,6 +298,11 @@ article {
 }
 .about-us-body h2 {
   margin-top: 1em;
+}
+
+#screening-list li {
+  color: red;
+  font-size: 4em;
 }
 
 #review {
