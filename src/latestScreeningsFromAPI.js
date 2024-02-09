@@ -1,4 +1,4 @@
-export async function getUpcomingScreenings(cmsAdapter) {
+export async function getLatestScreenings(cmsAdapter) {
   const screenings = await cmsAdapter.loadAllScreenings();
   const startPageScreenings = [];
   const today = new Date();
@@ -8,6 +8,5 @@ export async function getUpcomingScreenings(cmsAdapter) {
     if (differenceInHours > 0 && differenceInHours < 120)
       startPageScreenings.push(screening);
   });
-
   return startPageScreenings.slice(0, 10);
 }

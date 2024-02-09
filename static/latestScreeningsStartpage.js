@@ -1,4 +1,4 @@
-export async function renderUpcomingScreenings() {
+export async function renderLatestScreenings() {
   const res = await fetch('http://localhost:5080/api/screenings');
   const payload = await res.json();
 

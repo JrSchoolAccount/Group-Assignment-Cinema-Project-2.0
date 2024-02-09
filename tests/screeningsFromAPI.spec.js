@@ -1,5 +1,5 @@
 import { describe, test, expect } from '@jest/globals';
-import { getUpcomingScreenings } from '../src/screeningsFromAPI';
+import { getUpcomingScreenings } from '../src/latestScreeningsFromAPI';
 import { jest } from '@jest/globals';
 
 describe('getUpcomingScreenings()', () => {

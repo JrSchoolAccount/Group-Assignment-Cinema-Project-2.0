@@ -3,8 +3,8 @@ import fs from 'fs/promises';
 import ejs from 'ejs';
 import { loadMovie, loadMovies } from './movies.js';
 import { renderMarkdown } from './markdown.js';
-import { getUpcomingScreenings } from './screeningsFromAPI.js';
-import { getUpcomingMovieScreenings } from './upcomingScreeningsFromApi.js';
+import { getLatestScreenings } from './latestScreeningsFromAPI.js';
+import { getSpecificScreenings } from './specificScreeningsFromApi.js';
 import cmsAdapter from './cmsAdapter.js';
 
 const app = express();
@@ -50,18 +50,15 @@ app.get('/filmer/:movieId', async (req, res) => {
 });
 
 app.get('/api/screenings', async (req, res) => {
-  const upcomingScreenings = await getUpcomingScreenings(cmsAdapter);
-  res.send(upcomingScreenings);
+  const latestScreenings = await getLatestScreenings(cmsAdapter);
+  res.send(latestScreenings);
 });
 
 app.get('/api/movies/:movieID/screenings', async (req, res) => {
   try {
     const movieId = req.params.movieID;
-    const upcomingMovieScreenings = await getUpcomingMovieScreenings(
-      cmsAdapter,
-      movieId
-    );
-    res.json(upcomingMovieScreenings);
+    const specificScreenings = await getSpecificScreenings(cmsAdapter, movieId);
+    res.json(specificScreenings);
   } catch (error) {
     console.error('Could not fetch upcoming movie screening:', error);
     res

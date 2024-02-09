@@ -4,11 +4,13 @@ const API_BASE = 'https://plankton-app-xhkom.ondigitalocean.app/api';
 const cmsAdapter = {
   // here adapter can include more properties for other loads as well!
   async loadAllScreenings() {
-    const res = await fetch(API_BASE + '/screenings?populate=movie');
+    const res = await fetch(
+      API_BASE + '/screenings?populate=movie&pagination[pageSize]=100'
+    );
     const payload = await res.json();
     return payload.data;
   },
-  async loadUpcomingScreenings(id) {
+  async loadSpecificScreenings(id) {
     const res = await fetch(
       API_BASE + '/screenings?populate=movie&filters[movie]=' + id
     );
