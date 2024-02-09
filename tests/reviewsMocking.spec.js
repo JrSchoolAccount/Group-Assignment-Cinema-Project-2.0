@@ -1,6 +1,4 @@
 import { jest } from '@jest/globals';
-import request from 'supertest';
-import app from '../src/app';
 import { loadMovieReviews } from '../src/movieReviews';
 
 jest.spyOn(global, 'fetch').mockResolvedValue({
