@@ -1,0 +1,38 @@
+.container_reviews {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 2em auto 0 auto;
+    padding-bottom: 8em;
+    padding: 2em;
+    text-align: center;
+    width: 20%;
+
+    .review {
+        background-color: rgba(0, 0, 0, 0.349);
+        box-shadow: 0.2px 0.2px 0.2px rgb(102, 102, 102);
+        margin: 0.1em;
+        border: none;
+    
+    .review_header {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+    .reviewer_name {
+        align-self: flex-start;
+    }
+
+    .review_rating {
+        align-self: flex-end;
+    }
+    }
+    }
+
+    p {
+        margin: 0.4em;
+    }
+}
+
