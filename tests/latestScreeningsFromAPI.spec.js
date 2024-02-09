@@ -1,8 +1,8 @@
 import { describe, test, expect } from '@jest/globals';
-import { getUpcomingScreenings } from '../src/latestScreeningsFromAPI';
+import { getLatestScreenings } from '../src/latestScreeningsFromAPI';
 import { jest } from '@jest/globals';
 
-describe('getUpcomingScreenings()', () => {
+describe('getLatestScreenings()', () => {
   beforeEach(() => {
     jest.useFakeTimers();
   });
@@ -12,7 +12,7 @@ describe('getUpcomingScreenings()', () => {
 
   test('includes start time within five days', async () => {
     jest.setSystemTime(new Date('2024-02-02T19:00:00.000Z'));
-    const data = await getUpcomingScreenings({
+    const data = await getLatestScreenings({
       loadAllScreenings: async () => [
         mockScreenings({ start_time: '2024-02-05T19:00:00.000Z' }),
       ],
@@ -22,7 +22,7 @@ describe('getUpcomingScreenings()', () => {
 
   test('excludes start time after five days', async () => {
     jest.setSystemTime(new Date('2024-02-02T19:00:00.000Z'));
-    const data = await getUpcomingScreenings({
+    const data = await getLatestScreenings({
       loadAllScreenings: async () => [
         mockScreenings({ start_time: '2024-02-14T19:00:00.000Z' }),
       ],
@@ -31,7 +31,7 @@ describe('getUpcomingScreenings()', () => {
   });
 
   test('excludes start time before today', async () => {
-    const data = await getUpcomingScreenings({
+    const data = await getLatestScreenings({
       loadAllScreenings: async () => [
         mockScreenings({ start_time: '2024-01-14T19:00:00.000Z' }),
       ],
@@ -41,7 +41,7 @@ describe('getUpcomingScreenings()', () => {
 
   test('maximum ten screenings', async () => {
     jest.setSystemTime(new Date('2024-02-02T19:00:00.000Z'));
-    const data = await getUpcomingScreenings({
+    const data = await getLatestScreenings({
       loadAllScreenings: async () => [
         mockScreenings({ start_time: '2024-02-04T19:00:00.000Z' }),
         mockScreenings({ start_time: '2024-02-04T19:00:00.000Z' }),
@@ -62,7 +62,7 @@ describe('getUpcomingScreenings()', () => {
 
   test('include only screenings with date between today and until five days', async () => {
     jest.setSystemTime(new Date('2024-02-02T19:00:00.000Z'));
-    const data = await getUpcomingScreenings({
+    const data = await getLatestScreenings({
       loadAllScreenings: async () => [
         mockScreenings({ start_time: '2024-02-14T19:00:00.000Z' }),
         mockScreenings({ start_time: '2024-02-05T19:00:00.000Z' }),

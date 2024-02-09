@@ -2,13 +2,17 @@ import fetch from 'node-fetch';
 const API_BASE = 'https://plankton-app-xhkom.ondigitalocean.app/api';
 
 const cmsAdapter = {
-  // here adapter can include more properties for other loads as well!
   async loadAllScreenings() {
-    const res = await fetch(
-      API_BASE + '/screenings?populate=movie&pagination[pageSize]=100'
-    );
+    const res = await fetch(API_BASE + '/screenings'); // Do initial fetch to find out total number of screenings
     const payload = await res.json();
-    return payload.data;
+    const totalAmountOfScreenings = payload.meta.pagination.total;
+    const res2 = await fetch(
+      // Second fetch that includes all screenings
+      API_BASE +
+        `/screenings?populate=movie&pagination[pageSize]=${totalAmountOfScreenings}`
+    );
+    const payload2 = await res2.json();
+    return payload2.data;
   },
   async loadSpecificScreenings(id) {
     const res = await fetch(
@@ -16,13 +20,6 @@ const cmsAdapter = {
     );
     const payload = await res.json();
     return payload;
-  },
-  async loadAllReviews() {
-    const response = await fetch(
-      'https://plankton-app-xhkom.ondigitalocean.app/api/reviews?populate=movie'
-    );
-    const payload = await response.json();
-    return payload.data;
   },
 };
 

@@ -194,6 +194,7 @@ body .background__raining {
 .upcomingMovies li .screeningMovie:hover {
   color: rgb(241, 51, 51);
 }
+
 .herobanner_item {
   display: none;
 }
@@ -253,7 +254,7 @@ main li a {
   color: rgba(255, 255, 255, 0.781);
 }
 
-main li :hover {
+.movies :hover {
   font-size: 2.1em;
   color: white;
 }

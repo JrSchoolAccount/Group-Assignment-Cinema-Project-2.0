@@ -1,8 +1,8 @@
 import { describe, test, expect, beforeEach } from '@jest/globals';
-import { getUpcomingMovieScreenings } from '../src/upcomingScreeningsFromApi';
+import { getSpecificScreenings } from '../src/specificScreeningsFromApi';
 import { jest } from '@jest/globals';
 
-describe('getUpcomingMovieScreenings()', () => {
+describe('getSpecificScreenings()', () => {
   beforeEach(() => {
     jest.useFakeTimers();
   });
@@ -14,7 +14,7 @@ describe('getUpcomingMovieScreenings()', () => {
   test('only returns upcoming screenings', async () => {
     jest.setSystemTime(new Date('2024-02-02T19:00:00.000Z'));
     const cmsAdapter = {
-      loadUpcomingScreenings: async () => ({
+      loadSpecificScreenings: async () => ({
         data: [
           mockReviews({ start_time: '2023-06-14T19:00:00.000Z' }),
           mockReviews({ start_time: '2023-06-14T19:00:00.000Z' }),
@@ -23,7 +23,7 @@ describe('getUpcomingMovieScreenings()', () => {
       }),
     };
 
-    const { data } = await getUpcomingMovieScreenings(cmsAdapter);
+    const { data } = await getSpecificScreenings(cmsAdapter);
 
     expect(data).toHaveLength(1);
   });
