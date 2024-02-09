@@ -1,4 +1,5 @@
 import fetch from 'node-fetch';
+import { validateReview } from './validateReview.js';
 
 const API_BASE = 'https://plankton-app-xhkom.ondigitalocean.app/api';
 
@@ -62,6 +63,15 @@ export async function loadReviews(movieId) {
 }
 
 export async function createReview(movieId, name, comment, rating) {
+  
+  const review = {name, comment, rating};
+  const validation = await validateReview(review);
+
+  if (!validation.valid) {
+    console.error('Validation failed:', validation.error);
+    return { error: validation.error }; // Return an error object to be handled by the caller
+  }
+  
   try {    
     const response = await fetch(API_BASE + '/reviews', {
       method: 'POST',
@@ -77,6 +87,11 @@ export async function createReview(movieId, name, comment, rating) {
         },
       }),
     });
+
+    if (!response.ok) {
+      throw new Error('Failed to post review');
+    }
+
     const data = await response.json();
     // Handle the server's response.
     console.log('Success:', data);

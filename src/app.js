@@ -6,13 +6,21 @@ import { renderMarkdown } from './markdown.js';
 import { getUpcomingScreenings } from './screeningsFromAPI.js';
 import cmsAdapter from './cmsAdapter.js';
 import { loadReviews, createReview } from './movies.js';
-// import api from './review.js';
-// import cookieParser from "cookie-parser";
+import { validateReview } from './validateReview.js';
+
+function handleErrors(error, res) {
+  if (error.message === 'Movie not found' || error.message === 'Screening not found') {
+    res.status(404).render('error404', { error: error.message });
+  } else {
+    console.error(error); 
+    res.status(500).render('error500', { error: 'Internal Server Error' });
+  }
+}
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-// app.use(cookieParser());
+
 
 app.set('view engine', 'ejs');
 app.set('views', './views');
@@ -47,11 +55,7 @@ app.get('/filmer/:movieId', async (req, res) => {
     const reviews = await loadReviews(movieId); 
     res.render('film', { movie, reviews, renderMarkdown });
   } catch (error) {
-    if (error.message === 'Movie not found') {
-      res.status(404).render('filmer404');
-    } else {
-      res.status(500).send('Internal Server Error');
-    }
+    handleErrors(error, res);
   }
 });
 
@@ -60,13 +64,25 @@ app.get('/api/screenings', async (req, res) => {
   const upcomingScreenings = await getUpcomingScreenings(cmsAdapter);
   res.send(upcomingScreenings);
 });
+
 app.post("/movies/:movieId/reviews", async (req, res) => {
-  const name = req.body.name;
-  const rating = req.body.rating;
-  console.log("Rating:", rating);
-  await createReview(req.params.movieId, name, req.body.comment, rating);  
- 
-   res.redirect(`/filmer/${req.params.movieId}`);
+  const movieId = req.params.movieId;
+  const { name, rating, comment } = req.body;
+
+  try {
+    // Perform validation first
+    const validation = validateReview({ name, comment, rating });
+    if (!validation.valid) {
+      const movie = await loadMovie(movieId);
+      return res.status(400).render('badRequest400.ejs');
+    }
+
+    console.log("Rating:", rating);
+    await createReview(movieId, name, comment, rating);
+    res.redirect(`/filmer/${req.params.movieId}`);
+  }  catch (error) {
+    handleErrors(error, res);
+  }
 });
 
 

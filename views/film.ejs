@@ -70,7 +70,8 @@
 
       <h2>Lägg till skicka in recension. Skicka med fetch() frontend</h2>
 
-      <%- include('../views/partials/reviews.ejs') %>
+      <%- include('../views/partials/reviews.ejs', { reviews: reviews, formData: typeof formData !== 'undefined' ? formData : {}, error: typeof error !== 'undefined' ? error : null }) %>
+   
     </main>
 
     <%- include('../views/partials/footerFilm.ejs') %>
