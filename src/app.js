@@ -4,8 +4,6 @@ import ejs from 'ejs';
 import { loadMovie, loadMovies, loadScreenings } from './movies.js';
 import { renderMarkdown } from './markdown.js';
 import { loadReviews, createReview } from './movies.js';
-// import api from './review.js';
-// import cookieParser from "cookie-parser";
 import { getUpcomingScreenings } from './screeningsFromAPI.js';
 import cmsAdapter from './cmsAdapter.js';
 
@@ -63,17 +61,6 @@ app.post("/movies/:movieId/reviews", async (req, res) => {
  
    res.redirect(`/filmer/${req.params.movieId}`);
 });
-
-
-app.post("/movies/:movieId/reviews", async (req, res) => {
-  const name = req.body.name;
-  const rating = req.body.rating;
-  console.log("Rating:", rating);
-  await createReview(req.params.movieId, name, req.body.comment, rating);  
- 
-   res.redirect(`/filmer/${req.params.movieId}`);
-});
-
 
 
 app.get('/api/screenings', async (req, res) => {
