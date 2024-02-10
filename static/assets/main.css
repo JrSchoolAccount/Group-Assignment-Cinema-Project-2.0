@@ -5,10 +5,13 @@
 }
 
 main {
-  position: relative;
-  top: 250px;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   min-height: 45%;
+  position: relative;
+  text-align: center;
+  top: 250px;
 }
 
 * {
@@ -16,7 +19,7 @@ main {
   font-size: 10px;
   list-style-type: none;
   text-decoration: none;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 * h1 {
   font-size: 3.2rem;
@@ -37,12 +40,7 @@ main {
 }
 
 body {
-  background: linear-gradient(
-    0deg,
-    rgb(34, 34, 34) 10%,
-    rgb(38, 52, 74) 60%,
-    rgb(108, 121, 126) 100%
-  );
+  background: linear-gradient(0deg, rgb(34, 34, 34) 10%, rgb(38, 52, 74) 60%, rgb(108, 121, 126) 100%);
   background-repeat: no-repeat;
   height: 100vh;
 }
@@ -108,11 +106,7 @@ body .background__raining {
 }
 
 #header {
-  background: linear-gradient(
-    0deg,
-    rgba(38, 52, 74, 0.1) 50%,
-    rgba(34, 34, 34, 0.1) 100%
-  );
+  background: linear-gradient(0deg, rgba(38, 52, 74, 0.1) 50%, rgba(34, 34, 34, 0.1) 100%);
   background-repeat: no-repeat;
   height: 0px;
   background-color: black;
@@ -139,7 +133,7 @@ body .background__raining {
   color: white;
 }
 #header div nav ul li :hover {
-  color: #6c797e;
+  color: rgb(139, 23, 139);
   transition: color 0.3s ease;
   cursor: pointer;
 }
@@ -361,7 +355,6 @@ article {
   padding: 2em;
   padding-bottom: 8em;
 }
-
 #screening-list li {
   margin-top: 0.5em;
   font-size: 2em;

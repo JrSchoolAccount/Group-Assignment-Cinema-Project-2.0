@@ -14,10 +14,13 @@ $black: #000000;
 }
 
 main {
-  position: relative;
-  top: 250px;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   min-height: 45%; // This is a temporary fix for height and footer issues!
+  position: relative;
+  text-align: center;
+  top: 250px;
 }
 
 * {

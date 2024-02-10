@@ -50,8 +50,8 @@
       alt="raining in the background"
     />
     <main>
-      <h1>Aktuella filmer</h1>
       <ul>
+        <h1>Aktuella filmer</h1>
         <% movies.forEach(function(movie) { %>
         <li>
           <a href="/filmer/<%= movie.id %>"> <%= movie.title %> </a>
