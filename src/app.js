@@ -3,7 +3,7 @@ import fs from 'fs/promises';
 import ejs from 'ejs';
 import { loadMovie, loadMovies } from './movies.js';
 import { renderMarkdown } from './markdown.js';
-import { loadReviews, createReview } from './reviews.js';
+import { createReview } from './reviews.js';
 import { loadMovieReviews } from './movieReviews.js';
 import { getLatestScreenings } from './latestScreeningsFromAPI.js';
 import { getSpecificScreenings } from './specificScreeningsFromApi.js';
@@ -45,8 +45,8 @@ app.get('/filmer/:movieId', async (req, res) => {
   try {
     const movieId = req.params.movieId; 
     const movie = await loadMovie(movieId);
-    const reviews = await loadReviews(movieId); 
-    res.render('film', { movie, reviews, renderMarkdown });
+    
+    res.render('film', { movie, renderMarkdown });
   } catch (error) {
     if (error.message === 'Movie not found') {
       res.status(404).render('filmer404');
@@ -56,7 +56,7 @@ app.get('/filmer/:movieId', async (req, res) => {
   }
 });
 
-app.post("/movies/:movieId/reviews", async (req, res) => {
+app.post('/movies/:movieId/reviews', async (req, res) => {
   const name = req.body.name;
   const rating = req.body.rating;
   console.log('Rating:', rating);
