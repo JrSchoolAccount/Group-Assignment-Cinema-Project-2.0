@@ -25,13 +25,12 @@ document.addEventListener('DOMContentLoaded', async () => {
       screeningsData.data.forEach((screening) => {
         const listItem = document.createElement('li');
         const startTime = new Date(screening.attributes.start_time);
-        const formatDate = startTime.toLocaleDateString('sv-Se');
         const formatTime = startTime.toLocaleString('sv-SE', {
           timeZone: 'UTC',
         });
-        const formattedDateTime = `${formatDate}, ${formatTime}`;
+        const formattedDateTime = `${formatTime}`;
         headline.textContent = 'Kommande visningar';
-        listItem.textContent = `Datum: ${formattedDateTime}, Plats: ${screening.attributes.room}`;
+        listItem.textContent = `Datum: ${formattedDateTime} Plats: ${screening.attributes.room}`;
         screeningsList.appendChild(listItem);
       });
     }

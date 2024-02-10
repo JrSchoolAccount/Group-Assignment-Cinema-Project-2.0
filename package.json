@@ -1,13 +1,16 @@
 {
-  "name": "Group-Assignment-Cinema-Project-2.0",
+  "name": "group-assignment-cinema-project-2.0",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "type": "module",
+  "jest": {
+    "transform": {}
+  },
   "scripts": {
     "dev": "nodemon .",
     "start": "node .",
-    "sassy": "sass --no-source-map --watch static/src/main.scss static/assets/main.css",
+    "build": "sass --no-source-map --watch static/src/main.scss static/assets/main.css",
     "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest"
   },
   "author": "JR",
