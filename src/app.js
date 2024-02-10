@@ -6,6 +6,7 @@ import { renderMarkdown } from './markdown.js';
 import { loadMovieReviews } from './movieReviews.js';
 import { getLatestScreenings } from './latestScreeningsFromAPI.js';
 import { getSpecificScreenings } from './specificScreeningsFromApi.js';
+import { getMovieRating } from './getRatingAPI.js';
 import cmsAdapter from './cmsAdapter.js';
 
 const app = express();
@@ -39,8 +40,8 @@ app.get('/filmer/:movieId', async (req, res) => {
   try {
     const movieId = req.params.movieId;
     const movie = await loadMovie(movieId);
-
-    res.render('film', { movie, renderMarkdown });
+    const rating = await getMovieRating(movieId);
+    res.render('film', { movie, renderMarkdown, rating });
   } catch (error) {
     if (error.message === 'Movie not found') {
       res.status(404).render('filmer404');
