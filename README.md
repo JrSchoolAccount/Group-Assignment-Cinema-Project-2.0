@@ -18,6 +18,4 @@
 - Use kebab-case when for branch names
 
 ## Meeting notes
-
-**(Change link before release)**
 Included in the repo.
