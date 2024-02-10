@@ -30,7 +30,7 @@ export async function renderLatestScreenings() {
   const screeningDateCategories = [];
 
   for (let i = 0; i < payload.length; i++) {
-    const screeningDate = new Date(payload[i].attributes.start_time);
+    const screeningDate = new Date(payload[i].start_time);
     const screeningDateArray = [
       screeningDate.getDate(),
       screeningDate.getMonth(),
@@ -79,7 +79,7 @@ export async function renderLatestScreenings() {
     screeningsDOMList.append(dateHeadline);
 
     for (let i = 0; i < payload.length; i++) {
-      const screeningDate = new Date(payload[i].attributes.start_time);
+      const screeningDate = new Date(payload[i].start_time);
       const screeningDateArray = [
         screeningDate.getDate(),
         screeningDate.getMonth(),
@@ -99,17 +99,13 @@ export async function renderLatestScreenings() {
         //Create Screening Movie Title
         const screeningMovie = document.createElement('a');
         screeningMovie.className = 'screeningMovie';
-        screeningMovie.setAttribute(
-          'href',
-          `http://localhost:5080/filmer/${payload[i].attributes.movie.data.id}`
-        );
-        screeningMovie.innerText =
-          payload[i].attributes.movie.data.attributes.title + ' ';
+        screeningMovie.setAttribute('href', `/filmer/${payload[i].id}`);
+        screeningMovie.innerText = payload[i].movie + ' ';
         screeningDOMListItem.append(screeningMovie);
         //Create Screening Room
         const screeningRoom = document.createElement('span');
         screeningRoom.className = 'screeningRoom';
-        screeningRoom.innerText = '(' + payload[i].attributes.room + ')';
+        screeningRoom.innerText = '(' + payload[i].room + ')';
         screeningDOMListItem.append(screeningRoom);
         screeningsDOMList.append(screeningDOMListItem);
       }

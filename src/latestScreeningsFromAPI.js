@@ -1,6 +1,7 @@
 export async function getLatestScreenings(cmsAdapter) {
   const screenings = await cmsAdapter.loadAllScreenings();
   const startPageScreenings = [];
+
   const today = new Date();
   screenings.map((screening) => {
     const screening_date = new Date(screening.attributes.start_time);
@@ -8,5 +9,14 @@ export async function getLatestScreenings(cmsAdapter) {
     if (differenceInHours > 0 && differenceInHours < 120)
       startPageScreenings.push(screening);
   });
-  return startPageScreenings.slice(0, 10);
+
+  const cleanedStartPageScreenings = startPageScreenings
+    .slice(0, 10)
+    .map((screening) => ({
+      id: screening.attributes.movie.data.id,
+      start_time: screening.attributes.start_time,
+      room: screening.attributes.room,
+      movie: screening.attributes.movie.data.attributes.title,
+    }));
+  return cleanedStartPageScreenings;
 }
