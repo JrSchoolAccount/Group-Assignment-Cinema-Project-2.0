@@ -12,21 +12,26 @@
     margin-top: 1em;
   }
   
-  main li a {
+  main {
+    
+  h1 {
+    margin: 30px;
+  }
+   li a {
     font-size: 2em;
-    color: rgba(255, 255, 255, 0.781);
+    color: rgb(255, 255, 255);
   }
   
-  main li :hover {
-    font-size: 2.1em;
+   li :hover {
+    color: rgb(138, 13, 150);
+  }
+  
+   a {
+    font-size: 2em;
     color: white;
   }
-  
-  main a {
-    font-size: 2em;
-    color: white;
-  }
-  
+}
+
   article {
     display: flex;
     flex-direction: column;
