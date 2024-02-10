@@ -54,7 +54,7 @@ body .background__raining {
 }
 
 #footer {
-  background-color: #222222;
+  background-color: rgba(0, 0, 0, 0.619);
   box-shadow: 0px -1px 8px #b1bdb2;
   position: relative;
   bottom: 0;
@@ -107,19 +107,16 @@ body .background__raining {
 
 #header {
   height: 0px;
-  background-color: rgba(0, 0, 0, 0.56);
-}
-#header img {
-  background-color: rgba(0, 0, 0, 0.56);
+  background-color: rgba(0, 0, 0, 0.619);
 }
 #header div {
   align-items: center;
+  background-color: rgba(0, 0, 0, 0.56);
   width: 100%;
   padding: 2em;
   display: flex;
 }
 #header div nav {
-  background-color: rgba(0, 0, 0, 0.56);
   padding: 4em;
   width: 80%;
 }

@@ -8,20 +8,16 @@ $black: #222222;
 
 #header {
   height: 0px;
-  background-color: rgb(0 0 0 / 56%);
-
-  img {
-    background-color: rgb(0 0 0 / 56%);
-  }
+  background-color: rgba(0, 0, 0, 0.619);
 
   div {
     align-items: center;
+    background-color: rgb(0 0 0 / 56%);
     width: 100%;
     padding: 2em;
     display: flex;
 
     nav {
-      background-color: rgb(0 0 0 / 56%);
       padding: 4em;
       width: 80%;
 
