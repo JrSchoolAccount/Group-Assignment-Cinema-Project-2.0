@@ -194,6 +194,7 @@ body .background__raining {
 .upcomingMovies li .screeningMovie:hover {
   color: rgb(241, 51, 51);
 }
+
 .herobanner_item {
   display: none;
 }
@@ -270,7 +271,7 @@ main li a {
   color: rgba(255, 255, 255, 0.781);
 }
 
-main li :hover {
+.movies :hover {
   font-size: 2.1em;
   color: white;
 }
@@ -307,7 +308,6 @@ article {
 .about-us-body h2 {
   margin-top: 1em;
 }
-
 
 .container_reviews {
   display: flex;
@@ -353,7 +353,6 @@ article {
   padding: 2em;
   padding-bottom: 8em;
 }
-
 #screening-list li {
   margin-top: 0.5em;
   font-size: 2em;
