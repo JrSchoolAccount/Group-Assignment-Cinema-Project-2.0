@@ -4,6 +4,7 @@ import ejs from 'ejs';
 import { loadMovie, loadMovies } from './movies.js';
 import { renderMarkdown } from './markdown.js';
 import { loadReviews, createReview } from './reviews.js';
+import { loadMovieReviews } from './movieReviews.js';
 import { getUpcomingScreenings } from './screeningsFromAPI.js';
 import { getUpcomingMovieScreenings } from './upcomingScreeningsFromApi.js';
 import cmsAdapter from './cmsAdapter.js';
@@ -83,6 +84,19 @@ app.get('/api/movies/:movieID/screenings', async (req, res) => {
     res
       .status(500)
       .json({ error: 'Got an error when trying to fetch upcoming screenings' });
+  }
+});
+
+app.get('/api/movies/:movieId/reviews', async (req, res) => {
+  const movieId = req.params.movieId;
+  const page = req.query.page || 1;
+
+  try {
+    const reviews = await loadMovieReviews(movieId, page);
+    res.status(200).json({ reviews });
+  } catch (error) {
+    console.error('Error loading reviews:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
   }
 });
 

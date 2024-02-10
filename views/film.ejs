@@ -64,8 +64,14 @@
       <div>
         <ul id="screening-list"></ul>
       </div>
-
-      <div><h2>Lägg till lista med recensioner. fetch() frontend</h2></div>
+      <section>
+        <h2>Recensioner:</h2>
+        <div class="container_reviews"></div>
+        <div class="container_reviews_buttons">
+          <button class="button" id="previous"><span>Föregående</span></button>
+          <button class="button" id="next"><span>Nästa</span></button>
+        </div>
+      </section>
 
       <h2>Lägg till skicka in recension. Skicka med fetch() frontend</h2>
 
@@ -73,5 +79,6 @@
     </main>
 
     <%- include('../views/partials/footerFilm.ejs') %>
+    <script type="module" src="../static/reviews.js"></script>
   </body>
 </html>
