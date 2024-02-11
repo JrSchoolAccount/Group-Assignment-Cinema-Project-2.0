@@ -1,0 +1,1 @@
+//const fetchMovieRating = async (movieId) =>

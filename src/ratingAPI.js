@@ -9,7 +9,7 @@ export async function getMovieRating(id) {
   const res = await fetch(`${API_BASE}/reviews?filters[movie]=${id}`);
   const payload = await res.json();
 
-  if (payload.data.length >= 45) {
+  if (payload.data.length >= 5) {
     const ratings = payload.data.map((obj) => obj.attributes.rating);
     const totalRating = ratings.reduce((acc, curr) => acc + curr, 0);
     const averageRating = totalRating / ratings.length;

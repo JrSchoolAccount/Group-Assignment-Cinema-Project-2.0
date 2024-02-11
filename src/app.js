@@ -6,7 +6,7 @@ import { renderMarkdown } from './markdown.js';
 import { loadMovieReviews } from './movieReviews.js';
 import { getLatestScreenings } from './latestScreeningsFromAPI.js';
 import { getSpecificScreenings } from './specificScreeningsFromApi.js';
-import { getMovieRating } from './getRatingAPI.js';
+import { getMovieRating } from './ratingAPI.js';
 import cmsAdapter from './cmsAdapter.js';
 
 const app = express();
