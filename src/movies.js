@@ -31,6 +31,7 @@ export async function loadMovie(id) {
     if (!payload.data) {
       throw new Error('Movie not found');
     }
+    const imdbId = payload.data.attributes.imdbId;
 
     return {
       id: payload.data.id,
