@@ -53,7 +53,7 @@
       <ul>
         <h1>Aktuella filmer</h1>
         <% movies.forEach(function(movie) { %>
-        <li>
+        <li class="movies">
           <a href="/filmer/<%= movie.id %>"> <%= movie.title %> </a>
         </li>
         <% }); %>
