@@ -100,7 +100,7 @@ Retrieve screenings for a specific movie.
 "image": {
 "url": "https://m.media-amazon.com/images/M/MV5BNjE5NzA4ZDctOTJkZi00NzM0LTkwOTYtMDI4MmNkMzIxODhkXkEyXkFqcGdeQXVyNjY1MTg4Mzc@._V1_.jpg"
 },
-"createdAt": "2023-01-23T06:46:24.765Z",
+"createdAt": "2023-01-23T06:46:23.765Z",
 "updatedAt": "2024-01-24T10:52:48.366Z",
 "publishedAt": "2023-01-23T06:46:29.324Z"
 }
