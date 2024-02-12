@@ -37,7 +37,8 @@ Retrieve all the latest movie screenings.
 
 #### Example Response
 
-`[
+```json
+[
 {
 "id": 1,
 "start_time": "2024-02-11T21:00:00.000Z",
@@ -53,7 +54,8 @@ Retrieve all the latest movie screenings.
 "movie": "The Muppets"
 },
 ...
-]`
+]
+```
 
 ### 2. Get Specific Movie Screenings
 
@@ -69,7 +71,8 @@ Retrieve screenings for a specific movie.
 
 #### Example Response
 
-`{
+```json
+{
 
 "data": [
 
@@ -109,7 +112,8 @@ Retrieve screenings for a specific movie.
 }
 },
 ...
-]`
+]
+```
 
 ### 3. Get Movie Reviews
 
@@ -126,9 +130,8 @@ Retrieve reviews for a specific movie.
 
 #### Example Response
 
-jsonCopy code
-
-`{
+```json
+{
 "reviews": {
 
 "review": [
@@ -145,7 +148,8 @@ jsonCopy code
 "pageSize": 5,
 "pageCount": 7,
 "total": 31
-}`
+}
+```
 
 ### 4. Get Movie Rating
 
