@@ -9,6 +9,7 @@ app.set('view engine', 'ejs');
 app.set('views', './views');
 
 app.use('/static', express.static('./static'));
+app.use('/src', express.static('./src'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -74,16 +75,7 @@ app.post('/api/movies/:movieID/reviews', async (req, res) => {
   const reviewText = formData.review_text;
   const movieID = req.params.movieID;
 
-  const responseData = {
-    message: 'Review submitted successfully',
-    reviewerName,
-    rating,
-    reviewText,
-    movieID,
-    redirectUrl: `http://localhost:5080/`,
-  };
-  res.json(responseData);
-  console.log(responseData);
+  res.status(200).json({ message: 'Review submitted successfully', formData });
 });
 
 app.get('*', (req, res) => {
