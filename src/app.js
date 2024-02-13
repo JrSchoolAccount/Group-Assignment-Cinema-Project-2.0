@@ -40,7 +40,7 @@ app.get('/filmer/:movieId', async (req, res) => {
   try {
     const movieId = req.params.movieId;
     const movie = await loadMovie(movieId);
-    res.render('film', { movie, renderMarkdown, rating });
+    res.render('film', { movie, renderMarkdown });
   } catch (error) {
     if (error.message === 'Movie not found') {
       res.status(404).render('filmer404');
