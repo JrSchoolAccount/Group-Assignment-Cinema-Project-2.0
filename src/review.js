@@ -1,29 +1,29 @@
-const form = document.getElementById('review_form');
-form.addEventListener('submit', async function (event) {
-  event.preventDefault();
-
-  const formData = new FormData(form);
-
-  const reviewData = {
-    movie_id: formData.get('movie_id'),
-    reviewer_name: formData.get('reviewer_name'),
-    rating: formData.get('rating'),
-    review_text: formData.get('review_text'),
-  };
+export async function submitReview(reviewer, rating, reviewText, movieID) {
   try {
-    const response = await fetch('/api/movies/:movieID/reviews', {
-      method: 'POST',
-      headers: { 'Content-type': 'application/json' },
-      body: JSON.stringify(reviewData),
-    });
+    const response = await fetch(
+      'https://plankton-app-xhkom.ondigitalocean.app/api/reviews',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          data: {
+            author: reviewer,
+            comment: reviewText,
+            rating: rating,
+            movie: movieID,
+          },
+        }),
+      }
+    );
 
-    if (!response.ok) {
-      throw new Error('Failed to submit review');
-    }
-    const data = await response.json();
-    console.log('Data: ', data);
-    return data;
+    const reviewData = await response.json();
+    console.log('Review Submitted:', reviewData.data);
+    return reviewData.data;
   } catch (error) {
-    console.error('Error submitting: ');
+    console.error('Error submitting review:', error.message);
+    throw error;
   }
-});
+}
+export default submitReview;

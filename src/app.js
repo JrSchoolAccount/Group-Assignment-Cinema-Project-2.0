@@ -3,6 +3,7 @@ import fs from 'fs/promises';
 import ejs from 'ejs';
 import { loadMovie, loadMovies } from './movies.js';
 import { renderMarkdown } from './markdown.js';
+import { submitReview } from './review.js';
 
 const app = express();
 app.set('view engine', 'ejs');
@@ -69,13 +70,10 @@ app.get('api/movies/:movieID/reviews', async (req, res) => {});
 
 //Simons post request
 app.post('/api/movies/:movieID/reviews', async (req, res) => {
-  const formData = req.body;
-  const reviewerName = formData.reviewer_name;
-  const rating = formData.rating;
-  const reviewText = formData.review_text;
+  const { reviewer, rating, reviewText } = req.body;
   const movieID = req.params.movieID;
 
-  res.status(200).json({ message: 'Review submitted successfully', formData });
+  await submitReview(reviewer, rating, reviewText, movieID);
 });
 
 app.get('*', (req, res) => {

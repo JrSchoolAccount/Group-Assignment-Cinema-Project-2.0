@@ -1,9 +1,9 @@
 <div class="div__form">
     <h2>Review</h2>
-    <form id="review_form">
-        <input type="hidden" name="movie_id" value="<%= movieID %>">
+    <form id="review_form" method="post" action="/api/movies/<%= movieID %>/reviews">
+        <input type="hidden" name="movieID" value="<%= movieID %>">
         <div class="input__div__name">
-            <input type="text" name="reviewer_name" id="reviewer__name" required>
+            <input type="text" name="reviewer" id="reviewer__name" required>
             <label>Name</label>
         </div>
 
@@ -12,7 +12,7 @@
             <label>Rating</label>
         </div>
 
-        <textarea placeholder="Feel free to leave a comment..." name="review_text" id="review__text"></textarea>
+        <textarea placeholder="Feel free to leave a comment..." name="reviewText" id="review__text"></textarea>
 
         <button type="submit" class="a a__submit">Submit</button>
     </form>
