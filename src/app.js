@@ -40,7 +40,6 @@ app.get('/filmer/:movieId', async (req, res) => {
   try {
     const movieId = req.params.movieId;
     const movie = await loadMovie(movieId);
-    const rating = await getMovieRating(movieId);
     res.render('film', { movie, renderMarkdown, rating });
   } catch (error) {
     if (error.message === 'Movie not found') {
@@ -80,6 +79,17 @@ app.get('/api/movies/:movieId/reviews', async (req, res) => {
     res.status(200).json({ reviews });
   } catch (error) {
     console.error('Error loading reviews:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+app.get('/api/filmer/:movieId/rating', async (req, res) => {
+  try {
+    const movieId = req.params.movieId;
+    const rating = await getMovieRating(movieId);
+    res.status(200).json({ rating });
+  } catch (error) {
+    console.error('Error fetching movie rating:', error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });

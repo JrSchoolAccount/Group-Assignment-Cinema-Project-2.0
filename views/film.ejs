@@ -41,6 +41,7 @@
     <link rel="icon" type="image/png" href="../static/assets/logga.png" />
     <script type="module" src="../static/main.js" defer></script>
     <script src="/static/specificScreeningsMoviepage.js" defer></script>
+    <script src="../static/fetchRating.js" defer></script>
   </head>
 
   <body>
@@ -60,7 +61,7 @@
         <% } %>
       </article>
 
-      <div><h2 id="movie_rating">Betyg: <%= rating %> av 10</h2></div>
+      <div><h2 id="movie_rating"></h2></div>
 
       <div>
         <ul id="screening-list"></ul>
