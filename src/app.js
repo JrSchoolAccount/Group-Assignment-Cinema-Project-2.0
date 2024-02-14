@@ -3,17 +3,16 @@ import fs from 'fs/promises';
 import ejs from 'ejs';
 import { loadMovie, loadMovies } from './movies.js';
 import { renderMarkdown } from './markdown.js';
-import { createReview } from './reviews.js';
 import { loadMovieReviews } from './movieReviews.js';
 import { getLatestScreenings } from './latestScreeningsFromAPI.js';
 import { getSpecificScreenings } from './specificScreeningsFromApi.js';
 import cmsAdapter from './cmsAdapter.js';
+import { reviews } from "./reviewBody.js";
 
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
 
 app.set('view engine', 'ejs');
 app.set('views', './views');
@@ -55,16 +54,42 @@ app.get('/filmer/:movieId', async (req, res) => {
     }
   }
 });
-
-app.post('/movies/:movieId/reviews', async (req, res) => {
-  const name = req.body.name;
-  const rating = req.body.rating;
-  console.log('Rating:', rating);
-  await createReview(req.params.movieId, name, req.body.comment, rating);  
- 
-   res.redirect(`/filmer/${req.params.movieId}`);
+app.get('/api/movies/:movieId', (req, res) => {
+  const { movieId } = req.params;
+  res.render('reviews', { movieId });
 });
 
+app.post('/api/movies/:movieId/reviews', (req, res) => {
+  
+  const movieId = req.params.movieId; 
+  const { author, comment, rating } = req.body;
+
+  const newReview = {
+        movie: movieId,
+        comment: comment,
+        rating: rating,
+        author: author,
+      };
+ 
+//Convert the JavaScript object to a JSON string
+ const jsonData = JSON.stringify(reviews(newReview));
+ console.log(jsonData);
+ const fetchUrl = 'https://plankton-app-xhkom.ondigitalocean.app/api/reviews';
+ fetch(fetchUrl, {
+   method: 'POST',
+   headers: {
+     'Content-Type': 'application/json',
+   },
+   body: jsonData,
+ })
+ .then((res) => {
+  if (!res.ok) {
+    throw new Error('Failed to write data to database');
+  }
+  return res.json();
+})
+  console.log('Saving review(app.js):', newReview);  
+});
 
 app.get('/api/screenings', async (req, res) => {
   try {

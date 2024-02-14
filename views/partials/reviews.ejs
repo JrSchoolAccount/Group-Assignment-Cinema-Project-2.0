@@ -1,8 +1,8 @@
 <div id="review">
-  <form method="post" action="/movies/<%= movie.id %>/reviews">
+    <form>
     <div class="form__group">
       <label for="name">Namn:</label><br>
-      <input name="name" placeholder="Ditt namn" required class="name__input">
+      <input name="name" id="name" placeholder="Ditt namn" required class="name__input">
     </div>
     <div class="form__group">
       <label for="rating">Betyg:</label>
@@ -11,12 +11,13 @@
     </div>
     <div class="form__group">
       <label for="comment">Kommenter:</label>
-      <textarea name="comment" placeholder="Din kommentar"></textarea>
+      <textarea name="comment" id="comment" placeholder="Din kommentar"></textarea>
     </div>
     <input type="hidden" name="movie" value="<%= movie.id %>" id="movieId">
     <div class="form__group">
-      <input type="submit" value="Skicka">
+      <input type="submit" id="submit" value="Skicka">
     </div>
   </form>
 </div>
+<script src="/static/sendReviews.js"></script>
 
