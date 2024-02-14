@@ -7,8 +7,7 @@ import { loadMovieReviews } from './movieReviews.js';
 import { getLatestScreenings } from './latestScreeningsFromAPI.js';
 import { getSpecificScreenings } from './specificScreeningsFromApi.js';
 import cmsAdapter from './cmsAdapter.js';
-import { reviews } from "./reviewBody.js";
-
+import { review } from './reviewBody.js';
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
@@ -42,9 +41,9 @@ app.get('/filmer', async (req, res) => {
 
 app.get('/filmer/:movieId', async (req, res) => {
   try {
-    const movieId = req.params.movieId; 
+    const movieId = req.params.movieId;
     const movie = await loadMovie(movieId);
-    
+
     res.render('film', { movie, renderMarkdown });
   } catch (error) {
     if (error.message === 'Movie not found') {
@@ -59,36 +58,18 @@ app.get('/api/movies/:movieId', (req, res) => {
   res.render('reviews', { movieId });
 });
 
-app.post('/api/movies/:movieId/reviews', (req, res) => {
-  
-  const movieId = req.params.movieId; 
+app.post('/api/movies/:movieId/reviews', async (req, res) => {
+  const movieId = req.params.movieId;
   const { author, comment, rating } = req.body;
 
   const newReview = {
-        movie: movieId,
-        comment: comment,
-        rating: rating,
-        author: author,
-      };
- 
-//Convert the JavaScript object to a JSON string
- const jsonData = JSON.stringify(reviews(newReview));
- console.log(jsonData);
- const fetchUrl = 'https://plankton-app-xhkom.ondigitalocean.app/api/reviews';
- fetch(fetchUrl, {
-   method: 'POST',
-   headers: {
-     'Content-Type': 'application/json',
-   },
-   body: jsonData,
- })
- .then((res) => {
-  if (!res.ok) {
-    throw new Error('Failed to write data to database');
-  }
-  return res.json();
-})
-  console.log('Saving review(app.js):', newReview);  
+    movie: movieId,
+    comment,
+    rating,
+    author,
+  };
+  await review(newReview);
+  console.log('Saving review:', newReview);
 });
 
 app.get('/api/screenings', async (req, res) => {
