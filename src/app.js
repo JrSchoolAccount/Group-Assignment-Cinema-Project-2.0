@@ -3,14 +3,14 @@ import fs from 'fs/promises';
 import ejs from 'ejs';
 import { loadMovie, loadMovies } from './movies.js';
 import { renderMarkdown } from './markdown.js';
-import { submitReview } from './review.js';
+import fetch from 'node-fetch';
+import { sendReview } from './sendReview.js';
 
 const app = express();
 app.set('view engine', 'ejs');
 app.set('views', './views');
 
 app.use('/static', express.static('./static'));
-app.use('/src', express.static('./src'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -49,10 +49,7 @@ app.get('/filmer/:movieId', async (req, res) => {
 });
 
 //Simons review
-app.get('/review/:movieID/', async (req, res) => {
-  const { movieID } = req.params;
-  res.render('review', { movieID });
-});
+app.get('/review/:movieID/', async (req, res) => {});
 
 app.get('api/screenings', async (req, res) => {
   // Placeholder, delete me...
@@ -70,10 +67,24 @@ app.get('api/movies/:movieID/reviews', async (req, res) => {});
 
 //Simons post request
 app.post('/api/movies/:movieID/reviews', async (req, res) => {
-  const { reviewer, rating, reviewText } = req.body;
-  const movieID = req.params.movieID;
+  try {
+    const { author, rating, comment } = req.body;
+    const movieID = req.params.movieID;
 
-  await submitReview(reviewer, rating, reviewText, movieID);
+    const { success, data } = await sendReview(
+      author,
+      rating,
+      comment,
+      movieID
+    );
+    if (success) {
+      res.status(201).json({ message: 'Review submitted successfully!' });
+    } else {
+      res.status(500).json({ error: 'Error submitting review to CMS' });
+    }
+  } catch (error) {
+    res.status(500).json({ error: 'Internal server error' });
+  }
 });
 
 app.get('*', (req, res) => {

@@ -1,6 +1,7 @@
+<script type="module" src="../static/review.js"></script>
 <div class="div__form">
     <h2>Review</h2>
-    <form id="review_form" method="post" action="/api/movies/<%= movieID %>/reviews">
+    <form id="review_form">
         <input type="hidden" name="movieID" value="<%= movieID %>">
         <div class="input__div__name">
             <input type="text" name="reviewer" id="reviewer__name" required>
