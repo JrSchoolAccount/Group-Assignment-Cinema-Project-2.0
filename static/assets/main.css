@@ -268,23 +268,16 @@ body .background__raining {
   margin-top: 1em;
 }
 
-main h1 {
-  margin: 30px;
-}
 main li a {
   font-size: 2em;
-  color: rgb(255, 255, 255);
+  color: rgba(255, 255, 255, 0.781);
 }
-<<<<<<< HEAD
-main li :hover {
-  color: rgb(138, 13, 150);
-=======
 
 .movies :hover {
   font-size: 2.1em;
   color: white;
->>>>>>> main
 }
+
 main a {
   font-size: 2em;
   color: white;
