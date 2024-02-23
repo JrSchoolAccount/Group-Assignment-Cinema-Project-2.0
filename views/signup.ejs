@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link href="/static/assets/style.css" rel="stylesheet" />
+  </head>
+  <%- include('../views/partials/header.ejs') %>
+  <body>
+    <main>
+      <form
+        action=""
+        class="flex flex-col items-start container mx-auto p-36 bg-white"
+      >
+        <div class="text-3xl flex items-center mb-8">
+          <label class="text-3xl" for="">Användarnamn:</label>
+          <input
+            class="text-3xl border h-12 bg-slate-500 bg-opacity-50 ml-4 shadow"
+            type="text"
+          />
+        </div>
+
+        <div class="text-3xl flex items-center mb-8">
+          <label class="text-3xl" for="">E-post:</label>
+          <input
+            class="text-3xl border h-12 bg-slate-500 bg-opacity-50 ml-4 shadow"
+            type="email"
+          />
+        </div>
+
+        <div class="text-3xl flex items-center mb-8">
+          <label class="text-3xl" for="">Fullständigt namn:</label>
+          <input
+            class="text-3xl border h-12 bg-slate-500 bg-opacity-50 ml-4 shadow"
+            type="text"
+          />
+        </div>
+
+        <div class="text-3xl flex items-center mb-8">
+          <label class="text-3xl" for="">Lösenord:</label>
+          <input
+            class="border h-12 bg-slate-500 bg-opacity-50 ml-4 shadow text-3xl"
+            type="password"
+          />
+        </div>
+        <div>
+          <button
+            class="text-3xl border px-8 py-3 flex items-center ml-3 font-bold hover:border-red-500"
+          >
+            Submit
+          </button>
+        </div>
+      </form>
+    </main>
+  </body>
+  <%-include('../views/partials/footer.ejs') %>
+</html>

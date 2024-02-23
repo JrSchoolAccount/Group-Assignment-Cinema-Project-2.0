@@ -18,6 +18,14 @@ app.get('/', async (req, res) => {
   res.render('index');
 });
 
+app.get('/login', async (req, res) => {
+  res.render('login');
+});
+
+app.get('/signup', async (req, res) => {
+  res.render('signup');
+});
+
 app.get('/om-oss', async (req, res) => {
   res.render('om-oss');
 });
