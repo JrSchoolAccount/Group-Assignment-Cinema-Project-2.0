@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     if (screeningsData.data.length === 0) {
       const noScreeningsMessage = document.createElement('p');
-      noScreeningsMessage.textContent = 'Inga kommande visninbgar';
+      noScreeningsMessage.textContent = 'Inga kommande visningar';
       screeningsList.appendChild(noScreeningsMessage);
     } else {
       screeningsData.data.sort((a, b) => {
