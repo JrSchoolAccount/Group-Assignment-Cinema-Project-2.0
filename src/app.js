@@ -7,8 +7,12 @@ import { loadMovieReviews } from './movieReviews.js';
 import { getLatestScreenings } from './latestScreeningsFromAPI.js';
 import { getSpecificScreenings } from './specificScreeningsFromApi.js';
 import cmsAdapter from './cmsAdapter.js';
+import { review } from './reviewBody.js';
 
 const app = express();
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
 app.set('view engine', 'ejs');
 app.set('views', './views');
 
@@ -48,6 +52,24 @@ app.get('/filmer/:movieId', async (req, res) => {
       res.status(500).send('Internal Server Error');
     }
   }
+});
+app.get('/api/movies/:movieId', (req, res) => {
+  const { movieId } = req.params;
+  res.render('reviews', { movieId });
+});
+
+app.post('/api/movies/:movieId/reviews', async (req, res) => {
+  const movieId = req.params.movieId;
+  const { author, comment, rating } = req.body;
+
+  const newReview = {
+    movie: movieId,
+    comment,
+    rating,
+    author,
+  };
+  await review(newReview);
+  console.log('Saving review:', newReview);
 });
 
 app.get('/api/screenings', async (req, res) => {
