@@ -8,12 +8,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     const screeningsList = document.getElementById('screening-list');
     screeningsList.innerHTML = '';
 
-    const headline = document.createElement('h1');
-    headline.textContent = 'Kommande Visningar';
-    screeningsList.appendChild(headline);
-
     if (screeningsData.data.length === 0) {
-      const noScreeningsMessage = document.createElement('p');
+      const noScreeningsMessage = document.createElement('li');
       noScreeningsMessage.textContent = 'Inga kommande visningar';
       screeningsList.appendChild(noScreeningsMessage);
     } else {
@@ -29,7 +25,6 @@ document.addEventListener('DOMContentLoaded', async () => {
           timeZone: 'UTC',
         });
         const formattedDateTime = `${formatTime}`;
-        headline.textContent = 'Kommande visningar';
         listItem.textContent = `Datum: ${formattedDateTime} Plats: ${screening.attributes.room}`;
         screeningsList.appendChild(listItem);
       });
