@@ -21,6 +21,7 @@
             class="text-3xl border h-12 bg-slate-500 bg-opacity-50 ml-4 shadow"
             id="userName"
             type="text"
+            required
           />
         </div>
 
@@ -30,6 +31,8 @@
             class="text-3xl border h-12 bg-slate-500 bg-opacity-50 ml-4 shadow"
             id="email"
             type="email"
+            required
+            pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
           />
         </div>
 
@@ -39,6 +42,7 @@
             class="text-3xl border h-12 bg-slate-500 bg-opacity-50 ml-4 shadow"
             id="fullName"
             type="text"
+            required
           />
         </div>
 
@@ -48,7 +52,13 @@
             class="border h-12 bg-slate-500 bg-opacity-50 ml-4 shadow text-3xl"
             id="password"
             type="password"
+            required
+            pattern=".{8,}"
+            title="Lösenordet måste vara minst 8 tecken långt"
           />
+          <p class="text-2xl text-black ml-1">
+            Lösenordet ska vara minst 8 tecken långt
+          </p>
         </div>
         <div class="text-3xl flex items-center mb-8">
           <label class="text-3xl" for="">Upprepa lösenord:</label>
@@ -56,7 +66,13 @@
             class="border h-12 bg-slate-500 bg-opacity-50 ml-4 shadow text-3xl"
             id="repeatPassword"
             type="password"
+            required
+            pattern=".{8,}"
+            title="Lösenordet måste vara minst 8 tecken långt"
           />
+          <p class="text-2xl text-black ml-1">
+            Lösenordet ska vara minst 8 tecken långt
+          </p>
         </div>
         <div>
           <button
