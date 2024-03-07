@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login</title>
     <link href="/static/assets/style.css" rel="stylesheet" />
+    <script type="module" src="/static/login.js" defer></script>
   </head>
   <%- include('../views/partials/header.ejs') %>
   <body>
     <main>
-      <form action="" class="flex container mx-auto p-36 bg-white">
+      <form action="#" id="login" class="flex container mx-auto p-36 bg-white">
         <div class="flex items-center mb-4 p-10 h-12">
           <label for="username" class="text-3xl">Name:</label>
           <input
@@ -29,7 +30,7 @@
           />
           <button
             class="px-8 py-3 flex items-center ml-3 text-3xl"
-            type="button"
+            type="submit"
           >
             Sign In
           </button>
