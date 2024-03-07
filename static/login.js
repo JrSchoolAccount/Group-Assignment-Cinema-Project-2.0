@@ -10,6 +10,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const username = usernameInput.value;
     const password = passwordInput.value;
 
+    const formInfo = `${username}:${password}`;
+
     console.log('Anvädarnamn:', username, 'Lösenord:', password);
+    console.log(formInfo);
   });
 });
