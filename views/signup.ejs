@@ -18,7 +18,7 @@
         <div class="text-3xl flex items-center mb-8">
           <label class="text-3xl" for="">Användarnamn:</label>
           <input
-            class="text-3xl border h-12 bg-slate-500 bg-opacity-50 ml-4 shadow"
+            class="text-3xl border h-12 bg-slate-500 bg-opacity-50 ml-4 shadow invalid:bg-red-600 valid:bg-green-500"
             id="userName"
             type="text"
             required
@@ -28,18 +28,17 @@
         <div class="text-3xl flex items-center mb-8">
           <label class="text-3xl" for="">E-post:</label>
           <input
-            class="text-3xl border h-12 bg-slate-500 bg-opacity-50 ml-4 shadow"
+            class="text-3xl border h-12 bg-slate-500 bg-opacity-50 ml-4 shadow invalid:bg-red-600 valid:bg-green-500"
             id="email"
             type="email"
             required
-            pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
           />
         </div>
 
         <div class="text-3xl flex items-center mb-8">
           <label class="text-3xl" for="">Fullständigt namn:</label>
           <input
-            class="text-3xl border h-12 bg-slate-500 bg-opacity-50 ml-4 shadow"
+            class="text-3xl border h-12 bg-slate-500 bg-opacity-50 ml-4 shadow invalid:bg-red-600 valid:bg-green-500"
             id="fullName"
             type="text"
             required
@@ -49,11 +48,11 @@
         <div class="text-3xl flex items-center mb-8">
           <label class="text-3xl" for="">Lösenord:</label>
           <input
-            class="border h-12 bg-slate-500 bg-opacity-50 ml-4 shadow text-3xl"
+            class="border h-12 bg-slate-500 bg-opacity-50 ml-4 shadow text-3xl invalid:bg-red-600 valid:bg-green-500"
             id="password"
             type="password"
             required
-            pattern=".{8,}"
+            minlength="8"
             title="Lösenordet måste vara minst 8 tecken långt"
           />
           <p class="text-2xl text-black ml-1">
@@ -63,11 +62,11 @@
         <div class="text-3xl flex items-center mb-8">
           <label class="text-3xl" for="">Upprepa lösenord:</label>
           <input
-            class="border h-12 bg-slate-500 bg-opacity-50 ml-4 shadow text-3xl"
+            class="border h-12 bg-slate-500 bg-opacity-50 ml-4 shadow text-3xl invalid:bg-red-600 valid:bg-green-500"
             id="repeatPassword"
             type="password"
             required
-            pattern=".{8,}"
+            minlength="8"
             title="Lösenordet måste vara minst 8 tecken långt"
           />
           <p class="text-2xl text-black ml-1">
