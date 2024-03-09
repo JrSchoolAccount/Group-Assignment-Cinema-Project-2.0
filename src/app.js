@@ -83,6 +83,14 @@ app.get('/api/movies/:movieId/reviews', async (req, res) => {
   }
 });
 
+app.get('/registrera', async (req, res) => {
+  res.render('registrera');
+});
+
+app.get('/logga-in', async (req, res) => {
+  res.render('logga-in');
+});
+
 app.get('*', (req, res) => {
   res.status(404).render('404.ejs');
 });
