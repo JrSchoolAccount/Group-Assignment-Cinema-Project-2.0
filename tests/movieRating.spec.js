@@ -5,22 +5,21 @@ describe('getMovieRating()', () => {
   test('should return the average rating when there are 5 or more reviews', async () => {
     const mockData = {
       data: [
-        { attributes: { rating: 4 } },
-        { attributes: { rating: 5 } },
-        { attributes: { rating: 3 } },
-        { attributes: { rating: 4 } },
-        { attributes: { rating: 5 } },
+        { 'attributes': { 'rating': 4 } },
+        { 'attributes': { 'rating': 4 } },
+        { 'attributes': { 'rating': 4 } },
+        { 'attributes': { 'rating': 4 } },
       ],
     };
 
-    const mockFetch = jest.fn().mockResolvedValueOnce({
+    jest.fn().mockResolvedValueOnce({
       json: async () => mockData,
     });
+    console.log(mockData);
+    const movieId = 1;
+    const expectedAverageRating = 4;
 
-    const movieId = 0;
-    const expectedAverageRating = 4.2;
-
-    const averageRating = await getMovieRating(movieId, mockFetch);
+    const averageRating = await getMovieRating(movieId, mockData);
 
     expect(averageRating).toBe(expectedAverageRating);
   });

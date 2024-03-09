@@ -1,6 +1,8 @@
 import fetch from 'node-fetch';
 import { loadMovie } from './movies.js';
 
+// https://plankton-app-xhkom.ondigitalocean.app/api/reviews?filters[movie]=1
+// http://www.omdbapi.com/?apikey=ffc40a2a&i=tt5104604
 const API_BASE = 'https://plankton-app-xhkom.ondigitalocean.app/api';
 const omdbAPI = 'http://www.omdbapi.com';
 const API_KEY = 'ffc40a2a';
@@ -22,6 +24,6 @@ export async function getMovieRating(id, fetchFunction = fetch) {
     );
     const omdbData = await omdbRes.json();
     const imdbRating = omdbData.imdbRating;
-    return imdbRating;
+    return Number(imdbRating);
   }
 }
