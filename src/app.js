@@ -50,6 +50,14 @@ app.get('/filmer/:movieId', async (req, res) => {
   }
 });
 
+app.get('/bli-medlem', async (req, res) => {
+  res.render('bli-medlem');
+});
+
+app.get('/login', async (req, res) => {
+  res.render('login');
+});
+
 app.get('/api/screenings', async (req, res) => {
   try {
     const latestScreenings = await getLatestScreenings(cmsAdapter);

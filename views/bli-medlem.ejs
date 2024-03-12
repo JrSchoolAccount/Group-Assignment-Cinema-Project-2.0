@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bli medlem</title>
+    <link rel="icon" type="image/png" href="../static/assets/logga.png" />
+    <script type="module" src="../static/signupHandler.js"></script>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="./static/assets/frontendTemp.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body class="bg-black">
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-black">
+        <div class="container">
+          <a href="/">
+            <img
+              style="height: 130px"
+              src="./static/assets/logo-biograf_regna.png"
+              alt="Logotype for Folkets Bio"
+            />
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div
+            class="collapse navbar-collapse justify-content-end"
+            id="navbarNav"
+          >
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="filmer">Filmer</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="om-oss">Om oss</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="evenemang">Evenemang</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="biljetter">Biljetter</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="bli-medlem">Bli medlem</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="login">Logga in</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <section class="bg-black py-3 py-md-5 position-bottom">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5 col-xxl-4">
+            <div class="card border border-dark rounded-3 shadow-sm">
+              <div class="card-body p-3 p-md-4 p-xl-5 bg-dark">
+                <div class="text-center mb-3">
+                  <a href="/">
+                    <img
+                      src="../static/assets/logo-biograf_regna.png"
+                      alt="biograf Regna logga"
+                      width="175"
+                      height="57"
+                    />
+                  </a>
+                </div>
+                <h2 class="fs-6 fw-normal text-center text-light mb-4">
+                  Fyll i dina uppgifter
+                </h2>
+                <form id="signupForm">
+                  <div class="row gy-2 overflow-hidden">
+                    <div class="col-12">
+                      <div class="form-floating mb-3">
+                        <input
+                          type="text"
+                          class="form-control"
+                          name="firstName"
+                          id="firstName"
+                          placeholder="Förnamn"
+                          required
+                        />
+                        <label for="firstName" class="form-label"
+                          >Förnamn</label
+                        >
+                      </div>
+                    </div>
+
+                    <div class="col-12">
+                      <div class="form-floating mb-3">
+                        <input
+                          type="text"
+                          class="form-control"
+                          name="lastName"
+                          id="lastName"
+                          placeholder="Efternamn"
+                          required
+                        />
+                        <label for="lastName" class="form-label"
+                          >Efternamn</label
+                        >
+                      </div>
+                    </div>
+
+                    <div class="col-12">
+                      <div class="form-floating mb-3">
+                        <input
+                          type="email"
+                          class="form-control"
+                          name="email"
+                          id="email"
+                          placeholder="name@example.com"
+                          required
+                        />
+                        <label for="email" class="form-label">Email</label>
+                      </div>
+                    </div>
+
+                    <div class="col-12">
+                      <div class="form-floating mb-3">
+                        <input
+                          title="Minst 8 tecken & en stor bokstav"
+                          type="password"
+                          class="form-control"
+                          name="password"
+                          id="password"
+                          value=""
+                          placeholder="Password"
+                          pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\S+$).{8,}$"
+                          required
+                        />
+                        <label for="password" class="form-label"
+                          >Password</label
+                        >
+                      </div>
+                    </div>
+
+                    <div class="col-12">
+                      <div class="form-check">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          value=""
+                          name="iAgree"
+                          id="iAgree"
+                          required
+                        />
+                        <label
+                          class="form-check-label text-secondary"
+                          for="iAgree"
+                        >
+                          Godkänn att mina uppgifter hanteras enligt
+                          <a
+                            href="https://www.imy.se/verksamhet/dataskydd/det-har-galler-enligt-gdpr/introduktion-till-gdpr/dataskyddsforordningen-i-fulltext/"
+                            class="link-primary text-decoration-none"
+                            >GDPR</a
+                          >.
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="d-grid my-3">
+                        <button class="btn btn-primary btn-lg" type="submit">
+                          Registrera
+                        </button>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <p class="m-0 text-secondary text-center">
+                        Är du redan medlem?
+                        <a href="#!" class="link-primary text-decoration-none"
+                          >Logga in</a
+                        >
+                      </p>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <%- include('../views/partials/footer.ejs') %>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+      integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
