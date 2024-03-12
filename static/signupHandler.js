@@ -11,6 +11,6 @@ signupForm.addEventListener('submit', (event) => {
 
   // Store form data in localStorage
   localStorage.setItem('signupData', JSON.stringify(formObject));
-  console.log('Signup Form Data:', formObject);
-  event.target.reset();
+
+  window.location.href = '/login';
 });

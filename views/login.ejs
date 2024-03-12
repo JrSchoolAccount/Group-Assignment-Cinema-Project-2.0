@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Logga in</title>
     <link rel="icon" type="image/png" href="../static/assets/logga.png" />
-    <script type="module" src="../static/signupHandler.js"></script>
+    <script type="module" src="../static/loginHandler.js"></script>
     <link
       rel="stylesheet"
       type="text/css"
@@ -86,9 +86,9 @@
                   </a>
                 </div>
                 <h2 class="fs-6 fw-normal text-center text-light mb-4">
-                  Logga in
+                  Login
                 </h2>
-                <form id="signupForm">
+                <form id="signinForm">
                   <div class="row gy-2 overflow-hidden">
                     </div>
                     <div class="col-12">
@@ -101,7 +101,7 @@
                           placeholder="name@example.com"
                           required
                         />
-                        <label for="email" class="form-label">Email</label>
+                        <label for="email" class="form-label">E-post</label>
                       </div>
                     </div>
 
@@ -113,52 +113,27 @@
                           class="form-control"
                           name="password"
                           id="password"
-                          value=""
                           placeholder="Password"
-                          pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\S+$).{8,}$"
                           required
                         />
                         <label for="password" class="form-label"
-                          >Password</label
+                          >Lösenord</label
                         >
                       </div>
                     </div>
 
                     <div class="col-12">
-                      <div class="form-check">
-                        <input
-                          class="form-check-input"
-                          type="checkbox"
-                          value=""
-                          name="iAgree"
-                          id="iAgree"
-                          required
-                        />
-                        <label
-                          class="form-check-label text-secondary"
-                          for="iAgree"
-                        >
-                          Godkänn att mina uppgifter hanteras enligt
-                          <a
-                            href="https://www.imy.se/verksamhet/dataskydd/det-har-galler-enligt-gdpr/introduktion-till-gdpr/dataskyddsforordningen-i-fulltext/"
-                            class="link-primary text-decoration-none"
-                            >GDPR</a
-                          >.
-                        </label>
-                      </div>
-                    </div>
-                    <div class="col-12">
                       <div class="d-grid my-3">
                         <button class="btn btn-primary btn-lg" type="submit">
-                          Registrera
+                          Login
                         </button>
                       </div>
                     </div>
                     <div class="col-12">
                       <p class="m-0 text-secondary text-center">
-                        Är du redan medlem?
-                        <a href="#!" class="link-primary text-decoration-none"
-                          >Logga in</a
+                        Inte medlem än?
+                        <a href="bli-medlem" class="link-primary text-decoration-none"
+                          >Bli medlem</a
                         >
                       </p>
                     </div>

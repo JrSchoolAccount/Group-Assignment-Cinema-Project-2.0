@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Min sida</title>
+    <link rel="icon" type="image/png" href="../static/assets/logga.png" />
+    <script type="module" src="../static/profileHandler.js"></script>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="./static/assets/frontendTemp.css"
+    />
+  </head>
+  <body class="bg-black">
+    <header class="bg-black">
+      <nav class="flex items-center justify-between py-4 px-8">
+        <div>
+          <a href="/">
+            <img
+              src="./static/assets/logo-biograf_regna.png"
+              alt="Logotype for Folkets Bio"
+              class="h-12"
+            />
+          </a>
+        </div>
+        <button class="text-white lg:hidden focus:outline-none">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16m-7 6h7"
+            ></path>
+          </svg>
+        </button>
+        <div class="hidden lg:flex lg:items-center lg:w-auto" id="navbarNav">
+          <ul class="flex flex-col lg:flex-row lg:space-x-8 text-white text-lg">
+            <li class="mb-3 lg:mb-0">
+              <a href="filmer" class="hover:text-gray-300">Filmer</a>
+            </li>
+            <li class="mb-3 lg:mb-0">
+              <a href="om-oss" class="hover:text-gray-300">Om oss</a>
+            </li>
+            <li class="mb-3 lg:mb-0">
+              <a href="evenemang" class="hover:text-gray-300">Evenemang</a>
+            </li>
+            <li class="mb-3 lg:mb-0">
+              <a href="biljetter" class="hover:text-gray-300">Biljetter</a>
+            </li>
+            <li class="mb-3 lg:mb-0">
+              <a href="bli-medlem" class="hover:text-gray-300">Bli medlem</a>
+            </li>
+            <li class="mb-3 lg:mb-0">
+              <a href="login" class="hover:text-gray-300">Logga in</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+  </body>
+</html>
