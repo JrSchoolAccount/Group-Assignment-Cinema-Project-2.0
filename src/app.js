@@ -58,6 +58,10 @@ app.get('/login', async (req, res) => {
   res.render('login');
 });
 
+app.get('/profile', async (req, res) => {
+  res.render('profile');
+});
+
 app.get('/api/screenings', async (req, res) => {
   try {
     const latestScreenings = await getLatestScreenings(cmsAdapter);
