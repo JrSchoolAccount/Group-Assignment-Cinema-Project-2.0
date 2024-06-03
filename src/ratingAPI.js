@@ -1,34 +1,42 @@
-// Get movie rating from API
+// Get movie rating from CMS or IMDB
 import fetch from 'node-fetch';
 import { loadMovie } from './movies.js';
-
-// https://plankton-app-xhkom.ondigitalocean.app/api/reviews?filters[movie]=1
-// http://www.omdbapi.com/?apikey=ffc40a2a&i=tt5104604
 
 const API_BASE = 'https://plankton-app-xhkom.ondigitalocean.app/api';
 const omdbAPI = 'http://www.omdbapi.com';
 const API_KEY = 'ffc40a2a';
 
-export async function getMovieRating(id, mockFetch = fetch) {
-  const res = await mockFetch(`${API_BASE}/reviews?filters[movie]=${id}`);
-  const payload = await res.json();
+export const ratingAPI = {
+  fetchReviews: async (id) => {
+    const res = await fetch(`${API_BASE}/reviews?filters[movie]=${id}`);
+    return res.json();
+  },
 
-  if (payload.data.length >= 5) {
-    const ratings = payload.data.map((obj) => obj.attributes.rating);
+  calculateAverageRating: async (reviews) => {
+    const ratings = reviews.map((obj) => obj.attributes.rating);
     const totalRating = ratings.reduce((acc, curr) => acc + curr, 0);
-    const averageRating = totalRating / ratings.length;
-    console.log('Rating:', averageRating.toFixed(1));
+    return Number((totalRating / ratings.length).toFixed(1));
+  },
 
-    return Number(averageRating.toFixed(1));
-  } else {
+  fetchImdbRating: async (id) => {
     const getImdbId = await loadMovie(id);
     const imdbId = getImdbId.imdbId;
     const omdbRes = await fetch(`${omdbAPI}/?apikey=${API_KEY}&i=${imdbId}`);
     const omdbData = await omdbRes.json();
-    const imdbRating = omdbData.imdbRating;
-    console.log('imdb:', imdbRating);
-    return Number(imdbRating);
-  }
-}
+    return Number(omdbData.imdbRating);
+  },
 
-//getMovieRating(1);
+  getMovieRating: async (id) => {
+    const payload = await ratingAPI.fetchReviews(id);
+
+    if (payload.data.length >= 5) {
+      const averageRating = await ratingAPI.calculateAverageRating(
+        payload.data
+      );
+      return averageRating;
+    } else {
+      const imdbRating = await ratingAPI.fetchImdbRating(id);
+      return imdbRating;
+    }
+  },
+};

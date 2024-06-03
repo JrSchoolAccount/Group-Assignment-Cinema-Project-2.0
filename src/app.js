@@ -6,7 +6,7 @@ import { renderMarkdown } from './markdown.js';
 import { loadMovieReviews } from './movieReviews.js';
 import { getLatestScreenings } from './latestScreeningsFromAPI.js';
 import { getSpecificScreenings } from './specificScreeningsFromApi.js';
-import { getMovieRating } from './ratingAPI.js';
+import { ratingAPI } from './ratingAPI.js';
 import cmsAdapter from './cmsAdapter.js';
 
 const app = express();
@@ -86,7 +86,7 @@ app.get('/api/movies/:movieId/reviews', async (req, res) => {
 app.get('/api/filmer/:movieId/rating', async (req, res) => {
   try {
     const movieId = req.params.movieId;
-    const rating = await getMovieRating(movieId);
+    const rating = await ratingAPI.getMovieRating(movieId);
     res.status(200).json({ rating });
   } catch (error) {
     console.error('Error fetching movie rating:', error);

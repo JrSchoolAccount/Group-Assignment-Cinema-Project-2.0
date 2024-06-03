@@ -1,8 +1,10 @@
-// Working test
+// Description: Test to get the rating of a movie from the CMS API when there are 5 or more reviews.
 import { jest } from '@jest/globals';
-import { getMovieRating } from '../src/ratingAPI';
+import { ratingAPI } from '../src/ratingAPI.js';
 
-describe('getMovieRating()', () => {
+jest.mock('../src/movies.js');
+
+describe('getRatingCMS()', () => {
   test('should return the average rating when there are 5 or more reviews', async () => {
     const mockData = {
       data: [
@@ -14,14 +16,14 @@ describe('getMovieRating()', () => {
       ],
     };
 
-    const mockFetch = jest.fn().mockResolvedValueOnce({
-      json: async () => mockData,
-    });
+    jest
+      .spyOn(ratingAPI, 'fetchReviews')
+      .mockImplementation(() => Promise.resolve(mockData));
 
     const movieId = 1;
     const expectedAverageRating = 3;
 
-    const averageRating = await getMovieRating(movieId, mockFetch);
+    const averageRating = await ratingAPI.getMovieRating(movieId);
 
     expect(averageRating).toBe(expectedAverageRating);
   });
