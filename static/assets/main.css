@@ -357,3 +357,13 @@ article {
   margin-top: 0.5em;
   font-size: 2em;
 }
+
+#movie_rating {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 3px;
+  width: fit-content;
+  height: fit-content;
+  margin: 5px auto;
+  padding: 5px;
+}
