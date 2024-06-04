@@ -11,8 +11,7 @@
     "dev": "nodemon .",
     "start": "node .",
     "build": "sass --no-source-map --watch static/src/main.scss static/assets/main.css",
-    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest",
-    "testing": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --collect-coverage"
+    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest"
   },
   "author": "JR",
   "license": "ISC",
