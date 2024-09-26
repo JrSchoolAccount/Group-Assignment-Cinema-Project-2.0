@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <link href="/static/assets/style.css" rel="stylesheet">
+    <script type="module" src="/static/login.js" defer></script>
+</head>
+
+<body class="bg-gray-900">
+    <%- include('../views/partials/header.ejs') %>
+
+        <div class="flex flex-col justify-center sm:h-screen p-4">
+            <div class="max-w-md w-full mx-auto bg-white border border-gray-300 rounded-2xl p-8">
+                <div class="text-center mb-12">
+                    <h1 class="w-80 inline-block font-bold font text-4xl">Logga in</h1>
+                </div>
+                <form action="" id="loginForm" novalidate>
+                    <div class="space-y-6">
+                        <div>
+                            <label for="userName" class="text-gray-800 text-sm mb-2 block">Användarnamn</label>
+                            <input type="text" name="userName" class="text-gray-800 bg-white border-gray-300 w-full text-sm
+                    px-4 py-3 rounded-md outline-blue-500" placeholder="Ange användarnamn" required>
+                        </div>
+                        <div>
+                            <label for="password" class="text-gray-800 text-sm mb-2 block">Lösenord</label>
+                            <input type="password" name="password" class="text-gray-800 bg-white border-gray-300 w-full text-sm
+                    px-4 py-3 rounded-md outline-blue-500" placeholder="Ange ditt lösenord" required>
+                        </div>
+                        <button type="submit"
+                            class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg">
+                            Logga in
+                        </button>
+                        <p class="text-red-600" id="loginError"></p>
+                    </div>
+                    <a href="/signup" class="self-center">Har du inget konto? Registrera här </a>
+                </form>
+            </div>
+        </div>
+</body>

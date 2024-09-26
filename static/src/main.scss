@@ -7,6 +7,10 @@ $lightgrey: #f4f3ee;
 $white: #ffffff;
 $black: #000000;
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 *,
 *::before,
 *::after {

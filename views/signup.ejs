@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <link href="/static/assets/style.css" rel="stylesheet">
+    <script type="module" src="/static/signup.js" defer></script>
+</head>
+
+<body class="bg-gray-900">
+    <%- include('../views/partials/header.ejs') %>
+        <div class="flex flex-col justify-center sm:h-screen p-4">
+            <div class="max-w-md w-full mx-auto bg-white border border-gray-300 rounded-2xl p-8">
+                <div class="text-center mb-12">
+                    <h1 class="w-80 inline-block font-bold font text-4xl">Registrera ny användare</h1>
+                </div>
+                <form action="" id="signupForm" novalidate>
+                    <div class="space-y-6">
+                        <div>
+                            <label for="fullName" class="text-gray-800 text-sm mb-2 block">För- och efternamn</label>
+                            <input type="text" name="fullName" class="text-gray-800 bg-white border-gray-700 w-full text-sm
+                            px-4 py-3 rounded-md outline-blue-500" placeholder="För- och efternamn"
+                                pattern="^[A-Za-z]+(?: [A-Za-z]+)+$" required>
+                        </div>
+                        <div>
+                            <label for="email" class="text-gray-800 text-sm mb-2 block">E-post</label>
+                            <input type="email" name="email" class="text-gray-800 bg-white border-gray-300 w-full text-sm
+                            px-4 py-3 rounded-md outline-blue-500" placeholder="Ange e-postadress" required>
+                        </div>
+                        <div>
+                            <label for="userName" class="text-gray-800 text-sm mb-2 block">Användarnamn</label>
+                            <input type="text" name="userName" class="text-gray-800 bg-white border-gray-300 w-full text-sm
+                            px-4 py-3 rounded-md outline-blue-500" placeholder="Ange användarnamn" required>
+                        </div>
+                        <div>
+                            <label for="password" class="text-gray-800 text-sm mb-2 block">Password</label>
+                            <input type="password" name="password" id="password" class="text-gray-800 bg-white border-gray-300 w-full text-sm
+                            px-4 py-3 rounded-md outline-blue-500" placeholder="Ange ett lösenord"
+                                pattern="(?=.*\d)(?=.*[A-Z]).{6,}" required>
+                            <p id="passwordStrength" class="text-sm"></p>
+                        </div>
+                        <button type="submit" id="btnRegister"
+                            class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg ">
+                            Registrera
+                        </button>
+                    </div>
+                </form>
+                <a href="/login" class="py-3">Är du redan medlem? Logga in här</a>
+            </div>
+        </div>
+
+
+
+
+</body>
+
+</html>

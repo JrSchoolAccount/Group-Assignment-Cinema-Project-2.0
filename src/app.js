@@ -13,6 +13,7 @@ app.set('view engine', 'ejs');
 app.set('views', './views');
 
 app.use('/static', express.static('./static'));
+app.use('/static', express.static('static'));
 
 app.get('/', async (req, res) => {
   res.render('index');
@@ -28,6 +29,34 @@ app.get('/biljetter', async (req, res) => {
 
 app.get('/evenemang', async (req, res) => {
   res.render('evenemang');
+});
+
+app.get('/signup', async (req, res) => {
+  res.render('signup');
+});
+
+app.post('/signup', async (req, res) => {
+  try {
+    const { fullName, email, userName, password } = req.body;
+
+    res.status(200).json({ message: 'Användare registrerad' });
+  } catch (error) {
+    res.status(500).json();
+  }
+});
+
+app.get('/login', async (req, res) => {
+  res.render('login');
+});
+
+app.post('/login', async (req, res) => {
+  try {
+    const { userName, password } = req.body;
+
+    res.status(200).json({ message: 'Inloggad!' });
+  } catch (error) {
+    res.status(500).json({ error: 'Inloggning misslyckades' });
+  }
 });
 
 app.get('/filmer', async (req, res) => {
